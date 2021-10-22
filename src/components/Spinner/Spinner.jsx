@@ -7,11 +7,10 @@ const SpinnerBigBlock = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-  background: #e5e5e5;
-  height: 85vh;
-  padding-top: 5vh;
+  background: #ffffff;
   box-sizing: border-box;
   width: 100%;
+  height: 100vh;
 `;
 
 const SpinnerSmallBlock = styled.div`
