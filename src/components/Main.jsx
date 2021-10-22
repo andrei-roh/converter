@@ -14,7 +14,7 @@ const Main = ({
 }) => {
   useEffect(() => {
     onfetchBelarusianRubleRate();
-  }, []);
+  }, [onfetchBelarusianRubleRate]);
 
   return (
     <React.Fragment>
