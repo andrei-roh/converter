@@ -16,6 +16,7 @@ const rootReducer = (state = initialState, action) => {
     case FETCH_START:
       return {
         ...state,
+        error: null,
         loading: true,
       };
     case FETCH_ERROR:

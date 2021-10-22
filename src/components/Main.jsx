@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBelarusianRubleRate } from './redux/actions';
 import Spinner from './Spinner/Spinner';
+import Error from './Error/Error';
+import Content from './Content/Content';
 
 const Main = ({
   loading,
+  error,
   belarusianRubleRate,
   belarusianRubleRateToOtherCurrencies,
   onfetchBelarusianRubleRate,
@@ -12,22 +15,20 @@ const Main = ({
   useEffect(() => {
     onfetchBelarusianRubleRate();
   }, []);
-  const content = belarusianRubleRateToOtherCurrencies.map((element) => (
-    <div key={element.Cur_ID}>
-      <div>{element.Cur_Name}</div>
-      <div>{element.Cur_OfficialRate}</div>
-      <div>{element.Cur_Scale}</div>
-    </div>
-  ));
+
   return (
     <React.Fragment>
       {loading ? (
         <Spinner />
+      ) : error ? (
+        <Error error={error} />
       ) : (
-        <div>
-          <div>{`Белорусский рубль: ${belarusianRubleRate}`}</div>
-          <div>{content}</div>
-        </div>
+        <Content
+          belarusianRubleRate={belarusianRubleRate}
+          belarusianRubleRateToOtherCurrencies={
+            belarusianRubleRateToOtherCurrencies
+          }
+        />
       )}
     </React.Fragment>
   );
@@ -35,6 +36,7 @@ const Main = ({
 
 const mapStateToProps = (state) => ({
   loading: state.loading,
+  error: state.error,
   belarusianRubleRate: state.belarusianRubleRate,
   belarusianRubleRateToOtherCurrencies:
     state.belarusianRubleRateToOtherCurrencies,
