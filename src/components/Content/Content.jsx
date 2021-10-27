@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import EntryField from './components/EntryField/EntryField';
 import TableField from './components/TableField/TableField';
+import createOtherRate from './utils/createOtherRate';
+import getRate from './utils/getRate';
 import { BigBlock, SmallBlock } from './style';
 
 const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
@@ -25,43 +27,22 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
     id !== belarusRuble.Cur_ID
       ? setShowBelarusRubleRate(true)
       : setShowBelarusRubleRate(false);
-    createOtherRate(id);
+    createOtherRate(id, setCurrentMainId, otherCurrencyRateToOther);
   };
 
   const otherCurrencyRateToOther =
     Object.values(belarusRubleToOther).concat(belarusRuble);
 
-  const getRate = () => {
-    if (!showBelarusRubleRate) return belarusRubleToOther;
-    return otherCurrencyRateToOther;
-  };
-
-  const createOtherRate = (currencyId) => {
-    setCurrentMainId(currencyId);
-    const coefficientCur_OfficialRate = otherCurrencyRateToOther.find(
-      (element) => element.Cur_ID === currencyId
-    ).Cur_OfficialRate;
-    const coefficientCur_Scale = otherCurrencyRateToOther.find(
-      (element) => element.Cur_ID === currencyId
-    ).Cur_Scale;
-    otherCurrencyRateToOther.map((element) => {
-      if (element.Cur_ID === currencyId) {
-        element.Cur_Scale = 1;
-        return (element.Cur_OfficialRate = 1);
-      }
-      return (element.Cur_OfficialRate =
-        (coefficientCur_Scale * element.Cur_OfficialRate) /
-        coefficientCur_OfficialRate);
-    });
-  };
-
-  const defaultContent = Object.values(getRate())
+  const defaultContent = Object.values(
+    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
+  )
     .filter((element) => defaultValue.includes(element.Cur_ID))
     .map((element) => {
       const rate =
         (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
       return element.Cur_ID !== currentMainId ? (
         <TableField
+          key={element.Cur_ID}
           element={element}
           rate={rate}
           exchangeMainField={exchangeMainField}
@@ -69,11 +50,14 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
       ) : null;
     });
 
-  const allContent = Object.values(getRate()).map((element) => {
+  const allContent = Object.values(
+    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
+  ).map((element) => {
     const rate =
       (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
     return element.Cur_ID !== currentMainId ? (
       <TableField
+        key={element.Cur_ID}
         element={element}
         rate={rate}
         exchangeMainField={exchangeMainField}

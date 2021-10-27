@@ -6,7 +6,7 @@ const Spinner = () => {
   return (
     <BigBlock>
       <SmallBlock>
-        <Loader type="Watch" color="#0064EB" height={250} width={250} />
+        <Loader type="Oval" color="#3f51b5" height={250} width={250} />
       </SmallBlock>
     </BigBlock>
   );
