@@ -1,8 +1,4 @@
-import {
-  FETCH_START,
-  FETCH_ERROR,
-  BELARUSIAN_RUBLE_RATE_TO_OTHER_CURRENCIES,
-} from './types';
+import { FETCH_START, FETCH_ERROR, BELARUS_RUBLE_RATE_TO_OTHER } from './types';
 import { URL } from '../../endpoints';
 
 export const fetchStart = () => ({ type: FETCH_START });
@@ -12,16 +8,16 @@ export const fetchError = (error) => ({
   payload: error,
 });
 
-export const fetchBelarusianRubleRateEnd = (currency) => ({
-  type: BELARUSIAN_RUBLE_RATE_TO_OTHER_CURRENCIES,
+export const fetchBelarusRubleRateEnd = (currency) => ({
+  type: BELARUS_RUBLE_RATE_TO_OTHER,
   payload: currency,
 });
 
-export const fetchBelarusianRubleRate = () => (dispatch) => {
+export const fetchBelarusRubleRate = () => (dispatch) => {
   dispatch(fetchStart());
   return fetch(`${URL}/rates?periodicity=0`, { method: 'GET' })
     .then((response) => response.json())
-    .then((content) => dispatch(fetchBelarusianRubleRateEnd(content)))
+    .then((content) => dispatch(fetchBelarusRubleRateEnd(content)))
     .catch((error) => {
       dispatch(fetchError(error));
     });

@@ -1,14 +1,17 @@
-import {
-  FETCH_START,
-  FETCH_ERROR,
-  BELARUSIAN_RUBLE_RATE_TO_OTHER_CURRENCIES,
-} from './types';
+import { FETCH_START, FETCH_ERROR, BELARUS_RUBLE_RATE_TO_OTHER } from './types';
 
 const initialState = {
   loading: false,
   error: null,
-  belarusianRubleRate: 1,
-  belarusianRubleRateToOtherCurrencies: 0,
+  belarusRubleToOther: 0,
+  defaultValue: [431, 451, 456, 449, 1],
+  belarusRuble: {
+    Cur_Abbreviation: 'BEL',
+    Cur_ID: 1,
+    Cur_Name: 'Белорусский рубль',
+    Cur_OfficialRate: 1,
+    Cur_Scale: 1,
+  },
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -25,10 +28,10 @@ const rootReducer = (state = initialState, action) => {
         error: action.payload,
         loading: false,
       };
-    case BELARUSIAN_RUBLE_RATE_TO_OTHER_CURRENCIES:
+    case BELARUS_RUBLE_RATE_TO_OTHER:
       return {
         ...state,
-        belarusianRubleRateToOtherCurrencies: action.payload,
+        belarusRubleToOther: action.payload,
         loading: false,
       };
     default:

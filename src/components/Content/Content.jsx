@@ -1,150 +1,83 @@
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ButtonUpContent from './components/buttonUpContent/buttonUpContent';
-import {
-  ContentBigBlock,
-  ContentSmallBlock,
-  ContentMainTextField,
-  ContentSmallTextField,
-} from './style';
+import EntryField from './components/EntryField/EntryField';
+import TableField from './components/TableField/TableField';
+import createOtherRate from './utils/createOtherRate';
+import getRate from './utils/getRate';
+import { BigBlock, SmallBlock } from './style';
 
-const defaultValue = [431, 451, 456, 449, 1];
-const belarusinRuble = {
-  Cur_Abbreviation: 'BEL',
-  Cur_ID: 1,
-  Cur_Name: 'Белорусский рубль',
-  Cur_OfficialRate: 1,
-  Cur_Scale: 1,
-};
-
-const Content = ({
-  belarusianRubleRate,
-  belarusianRubleRateToOtherCurrencies,
-}) => {
-  const [showBelarusianRubleRate, setShowBelarusianRubleRate] = useState(false);
+const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
+  const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const handleShowAllCourses = () => {
     setShowAllCourses(!showAllCourses);
   };
-  const [mainFieldValue, setMainFieldValue] = useState(belarusianRubleRate);
+  const [mainFieldValue, setMainFieldValue] = useState(
+    belarusRuble.Cur_OfficialRate
+  );
   const handleMainFieldChange = (element) => {
     setMainFieldValue(element.target.value);
   };
   const [currentMainId, setCurrentMainId] = useState(1);
 
-  const [mainLabelValue, setMainLabelValue] = useState('Белорусский рубль');
+  const [mainLabelValue, setMainLabelValue] = useState(belarusRuble.Cur_Name);
   const exchangeMainField = (label, value, id) => {
     setMainLabelValue(label);
     setMainFieldValue(value);
-    id !== 1
-      ? setShowBelarusianRubleRate(true)
-      : setShowBelarusianRubleRate(false);
-    createOtherRate(id);
-    console.log(otherCurrencyRateToOtherCurrencies);
+    id !== belarusRuble.Cur_ID
+      ? setShowBelarusRubleRate(true)
+      : setShowBelarusRubleRate(false);
+    createOtherRate(id, setCurrentMainId, otherCurrencyRateToOther);
   };
 
-  const otherCurrencyRateToOtherCurrencies = Object.values(
-    belarusianRubleRateToOtherCurrencies
-  ).concat(belarusinRuble);
+  const otherCurrencyRateToOther =
+    Object.values(belarusRubleToOther).concat(belarusRuble);
 
-  const getRate = () => {
-    if (!showBelarusianRubleRate) return belarusianRubleRateToOtherCurrencies;
-    return otherCurrencyRateToOtherCurrencies;
-  };
-
-  const createOtherRate = (currencyId) => {
-    setCurrentMainId(currencyId);
-    const coefficientCur_OfficialRate = otherCurrencyRateToOtherCurrencies.find(
-      (element) => element.Cur_ID === currencyId
-    ).Cur_OfficialRate;
-    const coefficientCur_Scale = otherCurrencyRateToOtherCurrencies.find(
-      (element) => element.Cur_ID === currencyId
-    ).Cur_Scale;
-    otherCurrencyRateToOtherCurrencies.map((element) => {
-      if (element.Cur_ID === currencyId) {
-        element.Cur_Scale = 1;
-        return (element.Cur_OfficialRate = 1);
-      }
-      return (element.Cur_OfficialRate =
-        (coefficientCur_Scale * element.Cur_OfficialRate) /
-        coefficientCur_OfficialRate);
-    });
-  };
-
-  const defaultContent = Object.values(getRate())
+  const defaultContent = Object.values(
+    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
+  )
     .filter((element) => defaultValue.includes(element.Cur_ID))
     .map((element) => {
       const rate =
         (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
       return element.Cur_ID !== currentMainId ? (
-        <ContentSmallTextField key={element.Cur_ID}>
-          <TextField
-            label={element.Cur_Name}
-            type="number"
-            value={rate}
-            margin="normal"
-            variant="filled"
-            disabled={true}
-          />
-          <ButtonUpContent
-            label={element.Cur_Name}
-            value={rate}
-            id={element.Cur_ID}
-            exchangeMainField={exchangeMainField}
-          />
-        </ContentSmallTextField>
+        <TableField
+          key={element.Cur_ID}
+          element={element}
+          rate={rate}
+          exchangeMainField={exchangeMainField}
+        />
       ) : null;
     });
 
-  const allContent = Object.values(getRate()).map((element) => {
+  const allContent = Object.values(
+    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
+  ).map((element) => {
     const rate =
       (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
     return element.Cur_ID !== currentMainId ? (
-      <ContentSmallTextField key={element.Cur_ID}>
-        <TextField
-          label={
-            element.Cur_Name.length < 36
-              ? element.Cur_Name
-              : element.Cur_Name.substr(0, 3)
-          }
-          type="number"
-          value={rate}
-          margin="normal"
-          variant="filled"
-          disabled={true}
-        />
-        <ButtonUpContent
-          label={element.Cur_Name}
-          value={rate}
-          id={element.Cur_ID}
-          exchangeMainField={exchangeMainField}
-        />
-      </ContentSmallTextField>
+      <TableField
+        key={element.Cur_ID}
+        element={element}
+        rate={rate}
+        exchangeMainField={exchangeMainField}
+      />
     ) : null;
   });
   return (
-    <ContentBigBlock>
-      <ContentMainTextField>
-        <TextField
-          label={mainLabelValue}
-          type="number"
-          value={mainFieldValue}
-          variant="filled"
-          autoFocus={true}
-          onChange={handleMainFieldChange}
-          fullWidth
-        />
-      </ContentMainTextField>
-      <ContentSmallBlock>
-        {!showAllCourses ? defaultContent : allContent}
-      </ContentSmallBlock>
+    <BigBlock>
+      <EntryField
+        mainLabelValue={mainLabelValue}
+        mainFieldValue={mainFieldValue}
+        handleMainFieldChange={handleMainFieldChange}
+      />
+      <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
       {!showAllCourses ? (
         <Button variant="contained" onClick={handleShowAllCourses}>
           Показать больше
         </Button>
       ) : null}
-    </ContentBigBlock>
+    </BigBlock>
   );
 };
 

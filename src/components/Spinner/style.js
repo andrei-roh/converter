@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SpinnerBigBlock = styled.div`
+export const BigBlock = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -11,7 +11,7 @@ export const SpinnerBigBlock = styled.div`
   height: 100vh;
 `;
 
-export const SpinnerSmallBlock = styled.div`
+export const SmallBlock = styled.div`
   align-self: center;
   position: absolute;
   top: 50%;

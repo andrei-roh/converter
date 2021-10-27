@@ -1,14 +1,14 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-import { SpinnerBigBlock, SpinnerSmallBlock } from './style';
+import { BigBlock, SmallBlock } from './style';
 
 const Spinner = () => {
   return (
-    <SpinnerBigBlock>
-      <SpinnerSmallBlock>
-        <Loader type="Watch" color="#0064EB" height={250} width={250} />
-      </SpinnerSmallBlock>
-    </SpinnerBigBlock>
+    <BigBlock>
+      <SmallBlock>
+        <Loader type="Oval" color="#3f51b5" height={250} width={250} />
+      </SmallBlock>
+    </BigBlock>
   );
 };
 

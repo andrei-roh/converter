@@ -1,7 +1,7 @@
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
-export const ErrorBigBlock = styled.div`
+export const BigBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +12,7 @@ export const ErrorBigBlock = styled.div`
   width: 100%;
 `;
 
-export const ErrorSmallBlock = styled.div`
+export const SmallBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -20,7 +20,7 @@ export const ErrorSmallBlock = styled.div`
   flex-direction: column;
 `;
 
-export const ErrorPhrase = styled(Typography)`
+export const Phrase = styled(Typography)`
   padding-top: 40px;
   color: #808080;
 `;
