@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBelarusianRubleRate } from './redux/actions';
+import { fetchBelarusRubleRate } from './redux/actions';
 import Spinner from './Spinner/Spinner';
 import Error from './Error/Error';
 import Content from './Content/Content';
@@ -8,13 +8,14 @@ import Content from './Content/Content';
 const Main = ({
   loading,
   error,
-  belarusianRubleRate,
-  belarusianRubleRateToOtherCurrencies,
-  onfetchBelarusianRubleRate,
+  defaultValue,
+  belarusRuble,
+  belarusRubleToOther,
+  onfetchBelarusRubleRate,
 }) => {
   useEffect(() => {
-    onfetchBelarusianRubleRate();
-  }, [onfetchBelarusianRubleRate]);
+    onfetchBelarusRubleRate();
+  }, [onfetchBelarusRubleRate]);
 
   return (
     <React.Fragment>
@@ -24,10 +25,9 @@ const Main = ({
         <Error error={error} />
       ) : (
         <Content
-          belarusianRubleRate={belarusianRubleRate}
-          belarusianRubleRateToOtherCurrencies={
-            belarusianRubleRateToOtherCurrencies
-          }
+          defaultValue={defaultValue}
+          belarusRuble={belarusRuble}
+          belarusRubleToOther={belarusRubleToOther}
         />
       )}
     </React.Fragment>
@@ -37,13 +37,14 @@ const Main = ({
 const mapStateToProps = (state) => ({
   loading: state.loading,
   error: state.error,
+  defaultValue: state.defaultValue,
+  belarusRuble: state.belarusRuble,
   belarusianRubleRate: state.belarusianRubleRate,
-  belarusianRubleRateToOtherCurrencies:
-    state.belarusianRubleRateToOtherCurrencies,
+  belarusRubleToOther: state.belarusRubleToOther,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onfetchBelarusianRubleRate: () => dispatch(fetchBelarusianRubleRate()),
+  onfetchBelarusRubleRate: () => dispatch(fetchBelarusRubleRate()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

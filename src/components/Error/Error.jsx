@@ -1,15 +1,15 @@
 import React from 'react';
 import ErrorIcon from '@material-ui/icons/Error';
-import { ErrorBigBlock, ErrorSmallBlock, ErrorPhrase } from './style';
+import { BigBlock, SmallBlock, Phrase } from './style';
 
 const Error = ({ error }) => {
   return (
-    <ErrorBigBlock>
-      <ErrorSmallBlock>
+    <BigBlock>
+      <SmallBlock>
         <ErrorIcon />
-        <ErrorPhrase>{error}</ErrorPhrase>
-      </ErrorSmallBlock>
-    </ErrorBigBlock>
+        <Phrase>{error}</Phrase>
+      </SmallBlock>
+    </BigBlock>
   );
 };
 

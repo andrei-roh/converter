@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ContentBigBlock = styled.div`
+export const BigBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@ export const ContentBigBlock = styled.div`
   padding-top: 40px;
 `;
 
-export const ContentSmallBlock = styled.div`
+export const SmallBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,17 +30,4 @@ export const ContentSmallBlock = styled.div`
     grid-gap: 40px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-`;
-
-export const ContentMainTextField = styled.div`
-  margin-bottom: 20px;
-  min-width: 250px;
-  width: 20%;
-`;
-
-export const ContentSmallTextField = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 `;
