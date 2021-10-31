@@ -6,7 +6,6 @@ export const BigBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fffff;
   height: 100vh;
   box-sizing: border-box;
   width: 100%;
@@ -21,6 +20,6 @@ export const SmallBlock = styled.div`
 `;
 
 export const Phrase = styled(Typography)`
-  padding-top: 40px;
+  padding-top: 10px;
   color: #808080;
 `;

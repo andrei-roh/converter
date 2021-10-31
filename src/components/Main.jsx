@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchBelarusRubleRate } from './redux/actions';
 import Spinner from './Spinner/Spinner';
 import Error from './Error/Error';
 import Content from './Content/Content';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './globalStyles';
+import { lightTheme, darkTheme } from './themes';
 
 const Main = ({
   loading,
@@ -13,12 +16,20 @@ const Main = ({
   belarusRubleToOther,
   onfetchBelarusRubleRate,
 }) => {
+  const [theme, setTheme] = useState('light');
+  const [showDark, setShowDark] = useState(false);
+  const handleShowDark = (showDark) => {
+    setShowDark(!showDark);
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
+
   useEffect(() => {
     onfetchBelarusRubleRate();
   }, [onfetchBelarusRubleRate]);
 
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles />
       {loading ? (
         <Spinner />
       ) : error ? (
@@ -28,9 +39,11 @@ const Main = ({
           defaultValue={defaultValue}
           belarusRuble={belarusRuble}
           belarusRubleToOther={belarusRubleToOther}
+          showDark={showDark}
+          handleShowDark={handleShowDark}
         />
       )}
-    </React.Fragment>
+    </ThemeProvider>
   );
 };
 

@@ -1,7 +1,7 @@
 import ArrowUpwardRounded from '@material-ui/icons/ArrowDropUp';
 import { ButtonField } from './style';
 
-const More = ({ label, value, id, exchangeMainField }) => {
+const Change = ({ label, value, id, exchangeMainField }) => {
   const handleButtonClick = () => {
     exchangeMainField(label, value, id);
   };
@@ -12,4 +12,4 @@ const More = ({ label, value, id, exchangeMainField }) => {
   );
 };
 
-export default More;
+export default Change;

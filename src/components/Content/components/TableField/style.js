@@ -8,6 +8,24 @@ export const TextFieldBlock = styled.div`
   align-items: center;
 `;
 
-export const SmallTextField = styled(TextField)`
-  min-width: 224px !important;
-`;
+export const SmallTextField = styled(TextField)(({ theme }) => ({
+  minWidth: '224px',
+  caretColor: 'transparent',
+  '& label': {
+    color: theme.text,
+  },
+  '& .MuiInputBase-input': {
+    color: theme.text,
+    '&:hover': {
+      cursor: 'pointer',
+    },
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: theme.text,
+    },
+    '&:hover fieldset': {
+      borderColor: theme.text,
+    },
+  },
+}));

@@ -1,6 +1,5 @@
 const getFormatNumber = (number) => {
-  if (!Number.isInteger(+number)) return number.toFixed(3);
-  return number;
+  return number.toFixed(3);
 };
 
 export default getFormatNumber;
