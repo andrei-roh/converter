@@ -20,7 +20,6 @@ export const ButtonField = styled.div`
   width: 32px;
   height: 32px;
   margin: 16px 0;
-  background: #ffffff;
   z-index: 1;
 
   &:hover {

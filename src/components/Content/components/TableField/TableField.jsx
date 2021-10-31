@@ -1,7 +1,8 @@
-import More from '../More/More';
+import Change from '../Change/Change';
 import { TextFieldBlock, SmallTextField } from './style';
 import getFormatNumber from '../../utils/getFormatNumber';
 import ScrollOnTop from './components/ScrollOnTop/ScrollOnTop';
+import getCopyValue from '../../utils/getCopyValue';
 
 const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
   return (
@@ -12,13 +13,14 @@ const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
             ? element.Cur_Name
             : element.Cur_Name.substr(0, 3)
         }
-        type="number"
+        type="text"
         value={getFormatNumber(rate)}
         margin="normal"
         variant="filled"
-        disabled={true}
+        onClick={getCopyValue}
+        readOnly
       />
-      <More
+      <Change
         label={element.Cur_Name}
         value={rate}
         id={element.Cur_ID}

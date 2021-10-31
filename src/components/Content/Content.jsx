@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
 import Header from './components/Header/Header';
 import TableField from './components/TableField/TableField';
 import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
-import { BigBlock, SmallBlock } from './style';
+import { BigBlock, SmallBlock, More } from './style';
 
-const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
+const Content = ({
+  defaultValue,
+  belarusRuble,
+  belarusRubleToOther,
+  showDark,
+  handleShowDark,
+}) => {
   const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const handleShowAllCourses = () => {
@@ -85,12 +90,14 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
         mainLabelValue={mainLabelValue}
         mainFieldValue={mainFieldValue}
         handleMainFieldChange={handleMainFieldChange}
+        showDark={showDark}
+        handleShowDark={handleShowDark}
       />
       <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
       {!showAllCourses ? (
-        <Button variant="contained" onClick={handleShowAllCourses}>
+        <More variant="contained" onClick={handleShowAllCourses}>
           Показать больше
-        </Button>
+        </More>
       ) : null}
     </BigBlock>
   );

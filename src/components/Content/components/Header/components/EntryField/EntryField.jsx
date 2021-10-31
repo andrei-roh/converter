@@ -1,28 +1,24 @@
-import { MainTextField } from './style';
-import TextField from '@material-ui/core/TextField';
-import getFormatNumber from '../../../../utils/getFormatNumber';
+import { MainBlock, MainTextField } from './style';
+import getSelectValue from '../../../../utils/getSelectValue';
 
 const EntryField = ({
   mainLabelValue,
   mainFieldValue,
   handleMainFieldChange,
 }) => {
-  const getSelectValue = (element) => {
-    return element.target.select();
-  };
   return (
-    <MainTextField>
-      <TextField
+    <MainBlock>
+      <MainTextField
         label={mainLabelValue}
-        type="number"
-        value={getFormatNumber(mainFieldValue)}
+        value={mainFieldValue}
+        color="primary"
         variant="outlined"
         autoFocus={false}
         onFocus={getSelectValue}
         onChange={handleMainFieldChange}
         fullWidth
       />
-    </MainTextField>
+    </MainBlock>
   );
 };
 

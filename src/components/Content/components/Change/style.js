@@ -8,6 +8,7 @@ export const ButtonField = styled.div`
   border-radius: 5px 5px 5px 0;
   height: 54px;
   margin: 16px 0 8px;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),

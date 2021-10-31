@@ -5,7 +5,6 @@ export const BigBlock = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
   align-items: flex-start;
-  background: #ffffff;
   box-sizing: border-box;
   width: 100%;
   height: 100vh;

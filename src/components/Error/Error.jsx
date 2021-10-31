@@ -1,12 +1,12 @@
 import React from 'react';
-import ErrorIcon from '@material-ui/icons/Error';
+import Loader from 'react-loader-spinner';
 import { BigBlock, SmallBlock, Phrase } from './style';
 
 const Error = ({ error }) => {
   return (
     <BigBlock>
       <SmallBlock>
-        <ErrorIcon />
+        <Loader type="Triangle" color="#e75f5f" height={250} width={250} />
         <Phrase>{error}</Phrase>
       </SmallBlock>
     </BigBlock>
