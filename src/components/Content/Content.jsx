@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import EntryField from './components/EntryField/EntryField';
+import Header from './components/Header/Header';
 import TableField from './components/TableField/TableField';
 import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
@@ -19,8 +19,22 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
     setMainFieldValue(element.target.value);
   };
   const [currentMainId, setCurrentMainId] = useState(1);
-
   const [mainLabelValue, setMainLabelValue] = useState(belarusRuble.Cur_Name);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const handleShowScrollButton = () => {
+    if (window.pageYOffset !== 0) return setShowScrollButton(true);
+    return setShowScrollButton(false);
+  };
+
+  const cleanScrollListener = () => {
+    return window.removeEventListener('scroll', handleShowScrollButton);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleShowScrollButton);
+    return cleanScrollListener;
+  });
+
   const exchangeMainField = (label, value, id) => {
     setMainLabelValue(label);
     setMainFieldValue(value);
@@ -61,12 +75,13 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
         element={element}
         rate={rate}
         exchangeMainField={exchangeMainField}
+        showScrollButton={showScrollButton}
       />
     ) : null;
   });
   return (
     <BigBlock>
-      <EntryField
+      <Header
         mainLabelValue={mainLabelValue}
         mainFieldValue={mainFieldValue}
         handleMainFieldChange={handleMainFieldChange}

@@ -8,14 +8,13 @@ export const BigBlock = styled.div`
   background: #fffff;
   box-sizing: border-box;
   width: 100%;
-  padding-top: 40px;
 `;
 
 export const SmallBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
   min-width: 250px;
 
   @media (min-width: 501px) {

@@ -1,8 +1,10 @@
 import More from '../More/More';
 import TextField from '@material-ui/core/TextField';
 import { SmallTextField } from './style';
+import getFormatNumber from '../../utils/getFormatNumber';
+import ScrollOnTop from './components/ScrollOnTop/ScrollOnTop';
 
-const TableField = ({ element, rate, exchangeMainField }) => {
+const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
   return (
     <SmallTextField key={element.Cur_ID}>
       <TextField
@@ -12,7 +14,7 @@ const TableField = ({ element, rate, exchangeMainField }) => {
             : element.Cur_Name.substr(0, 3)
         }
         type="number"
-        value={rate}
+        value={getFormatNumber(rate)}
         margin="normal"
         variant="filled"
         disabled={true}
@@ -23,6 +25,7 @@ const TableField = ({ element, rate, exchangeMainField }) => {
         id={element.Cur_ID}
         exchangeMainField={exchangeMainField}
       />
+      {showScrollButton ? <ScrollOnTop /> : null}
     </SmallTextField>
   );
 };
