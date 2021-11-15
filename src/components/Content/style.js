@@ -39,14 +39,4 @@ export const More = styled(Button)`
   color: ${({ theme }) => theme.text} !important;
   background: ${({ theme }) => theme.more} !important;
   border: solid 1px ${({ theme }) => theme.border} !important;
-
-  &:focus {
-    border: solid #3f51b5 2px !important;
-    color: #3f51b5 !important;
-  }
-
-  &:focus-visible {
-    border: solid #3f51b5 2px !important;
-    color: #3f51b5 !important;
-  }
 `;
