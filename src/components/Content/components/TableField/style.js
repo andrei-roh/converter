@@ -10,6 +10,8 @@ export const TextFieldBlock = styled.div`
 
 export const SmallTextField = styled(TextField)(({ theme }) => ({
   minWidth: '224px !important',
+  maxHeight: '56px !important',
+  borderBottom: 'solid #fff 1px !important',
   caretColor: 'transparent',
   '& label': {
     color: theme.text,
