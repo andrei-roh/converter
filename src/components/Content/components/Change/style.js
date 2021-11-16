@@ -6,7 +6,7 @@ export const ButtonField = styled.button`
   align-items: center;
   border: solid #dedede 1px;
   border-radius: 5px 5px 5px 0;
-  height: 57px;
+  height: 56px;
   max-width: 24px;
   margin: 16px 0 8px;
   cursor: pointer;
