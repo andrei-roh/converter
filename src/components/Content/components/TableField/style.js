@@ -12,6 +12,7 @@ export const SmallTextField = styled(TextField)(({ theme }) => ({
   minWidth: '224px !important',
   maxHeight: '56px !important',
   borderBottom: 'solid #fff 1px !important',
+  boxSizing: 'border-box',
   caretColor: 'transparent',
   '& label': {
     color: theme.text,
@@ -20,6 +21,11 @@ export const SmallTextField = styled(TextField)(({ theme }) => ({
     color: theme.text,
     '&:hover': {
       cursor: 'pointer',
+    },
+  },
+  '& .MuiInputBase-root': {
+    '&::before': {
+      border: 'none',
     },
   },
   '& .MuiOutlinedInput-root': {
