@@ -17,6 +17,7 @@ const EntryField = ({
         onFocus={getSelectValue}
         onChange={handleMainFieldChange}
         fullWidth
+        type="number"
       />
     </MainBlock>
   );

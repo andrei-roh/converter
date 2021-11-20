@@ -22,7 +22,6 @@ const Main = ({
     setShowDark(!showDark);
     theme === 'light' ? setTheme('dark') : setTheme('light');
   };
-
   useEffect(() => {
     onfetchBelarusRubleRate();
   }, [onfetchBelarusRubleRate]);

@@ -18,7 +18,7 @@ export const fetchBelarusRubleRate = () => (dispatch) => {
   return fetch(`${URL}/rates?periodicity=0`, { method: 'GET' })
     .then((response) => response.json())
     .then((content) => dispatch(fetchBelarusRubleRateEnd(content)))
-    .catch((error) => {
-      dispatch(fetchError(error));
+    .catch(() => {
+      dispatch(fetchError('Ошибка получения курсов'));
     });
 };
