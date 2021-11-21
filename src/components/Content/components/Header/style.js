@@ -18,9 +18,3 @@ export const HeaderBlock = styled.div`
   z-index: 2;
   backdrop-filter: blur(6px);
 `;
-
-export const EmptyElement = styled.div`
-  width: 24px;
-  height: 24px;
-  padding: 12px;
-`;

@@ -5,13 +5,7 @@ import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
 import { BigBlock, SmallBlock, More } from './style';
 
-const Content = ({
-  defaultValue,
-  belarusRuble,
-  belarusRubleToOther,
-  showDark,
-  handleShowDark,
-}) => {
+const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
   const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const handleShowAllCourses = () => {
@@ -90,8 +84,6 @@ const Content = ({
         mainLabelValue={mainLabelValue}
         mainFieldValue={mainFieldValue}
         handleMainFieldChange={handleMainFieldChange}
-        showDark={showDark}
-        handleShowDark={handleShowDark}
       />
       <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
       {!showAllCourses ? (

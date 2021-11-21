@@ -28,7 +28,8 @@ export const SmallBlock = styled.div`
 
   @media (min-width: 769px) {
     display: grid;
-    grid-gap: 30px;
+    width: 95%;
+    grid-gap: 25px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 20px;
   }

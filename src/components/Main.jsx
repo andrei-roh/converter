@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBelarusRubleRate } from './redux/actions';
+import { fetchBelarusRubleRate, fetchSwitchTheme } from './redux/actions';
 import Spinner from './Spinner/Spinner';
 import Error from './Error/Error';
 import Content from './Content/Content';
@@ -15,13 +15,8 @@ const Main = ({
   belarusRuble,
   belarusRubleToOther,
   onfetchBelarusRubleRate,
+  theme,
 }) => {
-  const [theme, setTheme] = useState('light');
-  const [showDark, setShowDark] = useState(false);
-  const handleShowDark = (showDark) => {
-    setShowDark(!showDark);
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
   useEffect(() => {
     onfetchBelarusRubleRate();
   }, [onfetchBelarusRubleRate]);
@@ -38,8 +33,6 @@ const Main = ({
           defaultValue={defaultValue}
           belarusRuble={belarusRuble}
           belarusRubleToOther={belarusRubleToOther}
-          showDark={showDark}
-          handleShowDark={handleShowDark}
         />
       )}
     </ThemeProvider>
@@ -53,10 +46,12 @@ const mapStateToProps = (state) => ({
   belarusRuble: state.belarusRuble,
   belarusianRubleRate: state.belarusianRubleRate,
   belarusRubleToOther: state.belarusRubleToOther,
+  theme: state.theme,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onfetchBelarusRubleRate: () => dispatch(fetchBelarusRubleRate()),
+  onfetchSwitchTheme: (theme) => dispatch(fetchSwitchTheme(theme)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -1,25 +1,20 @@
-import { EmptyBlock, HeaderBlock, EmptyElement } from './style';
-import Dark from './components/Dark/Dark';
+import { EmptyBlock, HeaderBlock } from './style';
+import LanguageSelector from './components/LanguageSelector/LanguageSelector';
 import EntryField from './components/EntryField/EntryField';
+import Dark from './components/Dark/Dark';
 
-const Header = ({
-  mainLabelValue,
-  mainFieldValue,
-  handleMainFieldChange,
-  showDark,
-  handleShowDark,
-}) => {
+const Header = ({ mainLabelValue, mainFieldValue, handleMainFieldChange }) => {
   return (
     <>
       <EmptyBlock />
       <HeaderBlock>
-        <Dark showDark={showDark} handleShowDark={handleShowDark} />
+        <LanguageSelector />
         <EntryField
           mainLabelValue={mainLabelValue}
           mainFieldValue={mainFieldValue}
           handleMainFieldChange={handleMainFieldChange}
         />
-        <EmptyElement />
+        <Dark />
       </HeaderBlock>
     </>
   );
