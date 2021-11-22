@@ -6,7 +6,7 @@ const Error = ({ error }) => {
   return (
     <BigBlock>
       <SmallBlock>
-        <Loader type="Triangle" color="#e75f5f" height={250} width={250} />
+        <Loader type="Grid" color="#e75f5f" height={250} width={250} />
         <Phrase>{error}</Phrase>
       </SmallBlock>
     </BigBlock>

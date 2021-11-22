@@ -20,6 +20,6 @@ export const SmallBlock = styled.div`
 `;
 
 export const Phrase = styled(Typography)`
-  padding-top: 10px;
+  padding-top: 20px;
   color: #808080;
 `;

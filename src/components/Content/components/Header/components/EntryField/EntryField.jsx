@@ -1,15 +1,18 @@
 import { MainBlock, MainTextField } from './style';
 import getSelectValue from '../../../../utils/getSelectValue';
+import getCurrencyName from '../../../../utils/getCurrencyName';
+import { useTranslation } from 'react-i18next';
 
 const EntryField = ({
   mainLabelValue,
   mainFieldValue,
   handleMainFieldChange,
 }) => {
+  const { t } = useTranslation();
   return (
     <MainBlock>
       <MainTextField
-        label={mainLabelValue}
+        label={t(getCurrencyName(mainLabelValue))}
         value={mainFieldValue}
         color="primary"
         variant="outlined"
