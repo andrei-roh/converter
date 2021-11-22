@@ -4,8 +4,10 @@ import TableField from './components/TableField/TableField';
 import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
 import { BigBlock, SmallBlock, More } from './style';
+import { useTranslation } from 'react-i18next';
 
 const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
+  const { t } = useTranslation();
   const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const handleShowAllCourses = () => {
@@ -88,7 +90,7 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
       <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
       {!showAllCourses ? (
         <More variant="contained" onClick={handleShowAllCourses}>
-          Показать больше
+          {t('showMore')}
         </More>
       ) : null}
     </BigBlock>

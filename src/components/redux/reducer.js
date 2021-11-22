@@ -5,8 +5,8 @@ import {
   MENU_OPEN,
   MENU_CLOSE,
   SET_SHOW_DARK,
-  SWITCH_THEME,
   SET_THEME,
+  CHANGE_LANGUAGE,
 } from './types';
 
 const initialState = {
@@ -24,6 +24,7 @@ const initialState = {
   anchorMenu: null,
   showDark: false,
   theme: 'light',
+  language: 'en',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -66,10 +67,10 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         theme: action.payload,
       };
-    case SWITCH_THEME:
+    case CHANGE_LANGUAGE:
       return {
         ...state,
-        theme: action.payload,
+        language: action.payload,
       };
     default:
       return state;

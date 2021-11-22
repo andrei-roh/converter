@@ -6,7 +6,7 @@ import {
   MENU_CLOSE,
   SET_SHOW_DARK,
   SET_THEME,
-  SWITCH_THEME,
+  CHANGE_LANGUAGE,
 } from './types';
 import { URL } from '../../endpoints';
 
@@ -60,3 +60,8 @@ export const fetchSwitchTheme = (showDark, theme) => (dispatch) => {
     ? dispatch(fetchSetTheme('dark'))
     : dispatch(fetchSetTheme('light'));
 };
+
+export const fetchChangeLanguage = (language) => ({
+  type: CHANGE_LANGUAGE,
+  payload: language,
+});

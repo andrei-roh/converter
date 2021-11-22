@@ -5,8 +5,11 @@ import getFormatNumber from '../../utils/getFormatNumber';
 import ScrollOnTop from './components/ScrollOnTop/ScrollOnTop';
 import getCopyValue from '../../utils/getCopyValue';
 import getCopyMark from '../../utils/getCopyMark';
+import getCurrencyName from '../../utils/getCurrencyName';
+import { useTranslation } from 'react-i18next';
 
 const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
+  const { t } = useTranslation();
   const [currencyLabel, getCurrencyLabel] = useState(element.Cur_Name);
   const handleCurrencyLabelChange = (element) => {
     getCopyValue(element);
@@ -16,9 +19,7 @@ const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
   return (
     <TextFieldBlock key={element.Cur_ID}>
       <SmallTextField
-        label={
-          currencyLabel.length < 36 ? currencyLabel : currencyLabel.substr(0, 3)
-        }
+        label={t(getCurrencyName(currencyLabel))}
         type="text"
         value={getFormatNumber(rate)}
         margin="normal"

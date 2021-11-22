@@ -1,5 +1,5 @@
 const getCopyMark = (value, handler) => {
-  handler('Скопировано');
+  handler('copied');
   setTimeout(() => {
     handler(value);
   }, 300);

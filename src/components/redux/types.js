@@ -5,4 +5,4 @@ export const MENU_OPEN = 'MENU_OPEN';
 export const MENU_CLOSE = 'MENU_CLOSE';
 export const SET_SHOW_DARK = 'SET_SHOW_DARK';
 export const SET_THEME = 'SET_THEME';
-export const SWITCH_THEME = 'SWITCH_THEME';
+export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
