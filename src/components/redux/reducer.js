@@ -13,7 +13,7 @@ const initialState = {
   loading: false,
   error: null,
   belarusRubleToOther: 0,
-  defaultValue: [431, 451, 456, 449, 1],
+  defaultValue: [431, 451, 456, 1],
   belarusRuble: {
     Cur_Abbreviation: 'BEL',
     Cur_ID: 1,

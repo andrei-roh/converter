@@ -36,6 +36,8 @@ const getCurrencyName = (value) => {
       return 'moldavianGros';
     case 'Новозеландский доллар':
       return 'dollarNewZealand';
+    case 'Норвежских крон':
+      return 'norwegianKrone';
     case 'СДР (Специальные права заимствования)':
       return 'sdr';
     case 'Сингапурcкий доллар':
