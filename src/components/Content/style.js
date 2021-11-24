@@ -17,6 +17,7 @@ export const SmallBlock = styled.div`
   align-items: center;
   padding-bottom: 15px;
   min-width: 250px;
+  max-width: 1440px;
   margin-top: 10px;
 
   @media (min-width: 501px) {
@@ -28,7 +29,6 @@ export const SmallBlock = styled.div`
 
   @media (min-width: 769px) {
     display: grid;
-    width: 95%;
     grid-gap: 25px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 20px;

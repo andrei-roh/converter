@@ -1,5 +1,6 @@
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
-import { ButtonBlock, ButtonField } from './style';
+import { IconButton } from '@material-ui/core';
+import { ButtonBlock } from './style';
 import smoothscroll from 'smoothscroll-polyfill';
 
 const ScrollOnTop = () => {
@@ -9,9 +10,9 @@ const ScrollOnTop = () => {
   };
   return (
     <ButtonBlock onClick={getScrollOnTop}>
-      <ButtonField>
-        <KeyboardArrowUp />
-      </ButtonField>
+      <IconButton color="secondary">
+        <KeyboardArrowUp fontSize="large" />
+      </IconButton>
     </ButtonBlock>
   );
 };
