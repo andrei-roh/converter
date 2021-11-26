@@ -8,6 +8,7 @@ import {
   SET_THEME,
   CHANGE_LANGUAGE,
 } from './types';
+import { Action } from '../../types';
 
 const initialState = {
   loading: false,
@@ -27,7 +28,7 @@ const initialState = {
   language: 'en',
 };
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case FETCH_START:
       return {
@@ -60,7 +61,7 @@ const rootReducer = (state = initialState, action) => {
     case SET_SHOW_DARK:
       return {
         ...state,
-        showDark: action.payload,
+        showDark: !state.showDark,
       };
     case SET_THEME:
       return {

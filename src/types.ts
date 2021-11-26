@@ -16,6 +16,11 @@ export interface State {
     theme: string;
 }
 
+export interface Action {
+    type: string;
+    payload?: any;
+}
+
 export interface IMain extends State {
     onfetchBelarusRubleRate: any,
 }
