@@ -7,8 +7,9 @@ import Content from './Content/Content';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import { lightTheme, darkTheme } from './themes';
+import { IMain, State } from '../types';
 
-const Main = ({
+const Main: React.FC<IMain> = ({
   loading,
   error,
   defaultValue,
@@ -39,7 +40,7 @@ const Main = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   loading: state.loading,
   error: state.error,
   defaultValue: state.defaultValue,
@@ -49,9 +50,9 @@ const mapStateToProps = (state) => ({
   theme: state.theme,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
   onfetchBelarusRubleRate: () => dispatch(fetchBelarusRubleRate()),
-  onfetchSwitchTheme: (theme) => dispatch(fetchSwitchTheme(theme)),
+  onfetchSwitchTheme: (theme: string) => dispatch(fetchSwitchTheme(theme)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
