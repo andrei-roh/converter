@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Change from '../Change/Change';
 import { TextFieldBlock, SmallTextField } from './style';
 import getFormatNumber from '../../utils/getFormatNumber';
-import ScrollOnTop from './components/ScrollOnTop/ScrollOnTop';
+import ScrollUp from './components/ScrollUp/ScrollUp';
 import getCopyValue from '../../utils/getCopyValue';
 import getCopyMark from '../../utils/getCopyMark';
 import getCurrencyName from '../../utils/getCurrencyName';
@@ -33,7 +33,7 @@ const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
         id={element.Cur_ID}
         exchangeMainField={exchangeMainField}
       />
-      {showScrollButton ? <ScrollOnTop /> : null}
+      {showScrollButton ? <ScrollUp /> : null}
     </TextFieldBlock>
   );
 };

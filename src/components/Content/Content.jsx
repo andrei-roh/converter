@@ -89,7 +89,11 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
       />
       <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
       {!showAllCourses ? (
-        <More variant="contained" onClick={handleShowAllCourses}>
+        <More
+          variant="contained"
+          onClick={handleShowAllCourses}
+          title={t('showMore')}
+        >
           {t('showMore')}
         </More>
       ) : null}

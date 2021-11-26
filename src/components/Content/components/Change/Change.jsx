@@ -1,12 +1,18 @@
 import ArrowUpwardRounded from '@material-ui/icons/ArrowDropUp';
 import { ButtonField } from './style';
+import getCurrencyName from '../../utils/getCurrencyName';
+import { useTranslation } from 'react-i18next';
 
 const Change = ({ label, value, id, exchangeMainField }) => {
+  const { t } = useTranslation();
   const handleButtonClick = () => {
     exchangeMainField(label, value, id);
   };
   return (
-    <ButtonField onClick={handleButtonClick}>
+    <ButtonField
+      onClick={handleButtonClick}
+      title={`${t('switchTo')} ${t(getCurrencyName(label))}`}
+    >
       <ArrowUpwardRounded />
     </ButtonField>
   );
