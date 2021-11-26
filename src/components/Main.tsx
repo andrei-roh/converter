@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBelarusRubleRate, fetchSwitchTheme } from './redux/actions';
+import { fetchBelarusRubleRate } from './redux/actions';
 import Spinner from './Spinner/Spinner';
 import Error from './Error/Error';
 import Content from './Content/Content';
@@ -48,11 +48,11 @@ const mapStateToProps = (state: State) => ({
   belarusianRubleRate: state.belarusianRubleRate,
   belarusRubleToOther: state.belarusRubleToOther,
   theme: state.theme,
+  showDark: state.showDark,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
   onfetchBelarusRubleRate: () => dispatch(fetchBelarusRubleRate()),
-  onfetchSwitchTheme: (theme: string) => dispatch(fetchSwitchTheme(theme)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

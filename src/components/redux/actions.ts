@@ -44,19 +44,23 @@ export const fetchMenuClose = (anchorMenu: number) => ({
   payload: anchorMenu,
 });
 
-export const fetchSetShowDark = () => ({ type: SET_SHOW_DARK });
+export const fetchSetShowDark = (showDark: boolean) => ({
+  type: SET_SHOW_DARK,
+  payload: !showDark,
+});
 
 export const fetchSetTheme = (theme: string) => ({
   type: SET_THEME,
   payload: theme,
 });
 
-export const fetchSwitchTheme = (theme: string) => (dispatch: any) => {
-  dispatch(fetchSetShowDark());
-  theme === 'light'
-    ? dispatch(fetchSetTheme('dark'))
-    : dispatch(fetchSetTheme('light'));
-};
+export const fetchSwitchTheme =
+  (showDark: boolean, theme: string) => (dispatch: any) => {
+    dispatch(fetchSetShowDark(showDark));
+    theme === 'light'
+      ? dispatch(fetchSetTheme('dark'))
+      : dispatch(fetchSetTheme('light'));
+  };
 
 export const fetchChangeLanguage = (language: string) => ({
   type: CHANGE_LANGUAGE,

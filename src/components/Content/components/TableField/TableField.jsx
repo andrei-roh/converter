@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Change from '../Change/Change';
 import { TextFieldBlock, SmallTextField } from './style';
 import getFormatNumber from '../../utils/getFormatNumber';

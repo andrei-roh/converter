@@ -61,7 +61,7 @@ const rootReducer = (state = initialState, action: Action) => {
     case SET_SHOW_DARK:
       return {
         ...state,
-        showDark: !state.showDark,
+        showDark: action.payload,
       };
     case SET_THEME:
       return {
