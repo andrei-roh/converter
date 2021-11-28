@@ -5,8 +5,13 @@ import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
 import { BigBlock, SmallBlock, More } from './style';
 import { useTranslation } from 'react-i18next';
+import { IContent } from '../../types';
 
-const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
+const Content: React.FC<IContent> = ({
+  defaultValue,
+  belarusRuble,
+  belarusRubleToOther,
+}) => {
   const { t } = useTranslation();
   const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
@@ -16,7 +21,7 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
   const [mainFieldValue, setMainFieldValue] = useState(
     belarusRuble.Cur_OfficialRate
   );
-  const handleMainFieldChange = (element) => {
+  const handleMainFieldChange = (element: any) => {
     setMainFieldValue(element.target.value);
   };
   const [currentMainId, setCurrentMainId] = useState(1);
@@ -36,7 +41,7 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
     return cleanScrollListener;
   });
 
-  const exchangeMainField = (label, value, id) => {
+  const exchangeMainField = (label: string, value: number, id: number) => {
     setMainLabelValue(label);
     setMainFieldValue(value);
     id !== belarusRuble.Cur_ID
@@ -51,8 +56,8 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
   const defaultContent = Object.values(
     getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
   )
-    .filter((element) => defaultValue.includes(element.Cur_ID))
-    .map((element) => {
+    .filter((element: any) => defaultValue.includes(element.Cur_ID))
+    .map((element: any) => {
       const rate =
         (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
       return element.Cur_ID !== currentMainId ? (
@@ -61,13 +66,14 @@ const Content = ({ defaultValue, belarusRuble, belarusRubleToOther }) => {
           element={element}
           rate={rate}
           exchangeMainField={exchangeMainField}
+          showScrollButton={showScrollButton}
         />
       ) : null;
     });
 
   const allContent = Object.values(
     getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
-  ).map((element) => {
+  ).map((element: any) => {
     const rate =
       (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
     return element.Cur_ID !== currentMainId ? (

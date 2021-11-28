@@ -6,13 +6,19 @@ export interface Currency {
   Cur_Scale: number;
 }
 
-export interface State {
-  loading: boolean;
+export interface IError {
   error: string;
+}
+
+export interface IContent {
   defaultValue: Array<number>;
   belarusRuble: Currency;
-  belarusianRubleRate: any;
   belarusRubleToOther: number;
+}
+
+export interface State extends IError, IContent {
+  loading: boolean;
+  belarusianRubleRate: any;
   theme: string;
   showDark: boolean;
 }
@@ -20,6 +26,26 @@ export interface State {
 export interface Action {
   type: string;
   payload?: any;
+}
+
+export interface IChange {
+  label: string;
+  value: number;
+  id: number;
+  exchangeMainField: any;
+}
+
+export interface ITableField {
+  element: any;
+  rate: number;
+  exchangeMainField: any;
+  showScrollButton: boolean;
+}
+
+export interface IHeader {
+  mainLabelValue: string;
+  mainFieldValue: number;
+  handleMainFieldChange: any;
 }
 
 export interface IMain extends State {

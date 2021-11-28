@@ -1,8 +1,8 @@
-import React from 'react';
 import Loader from 'react-loader-spinner';
 import { BigBlock, SmallBlock, Phrase } from './style';
+import { IError } from '../../types';
 
-const Error = ({ error }) => {
+const Error: React.FC<IError> = ({ error }) => {
   return (
     <BigBlock>
       <SmallBlock>

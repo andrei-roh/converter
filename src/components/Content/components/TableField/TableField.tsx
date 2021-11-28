@@ -7,11 +7,17 @@ import getCopyValue from '../../utils/getCopyValue';
 import getCopyMark from '../../utils/getCopyMark';
 import getCurrencyName from '../../utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
+import { ITableField } from '../../../../types';
 
-const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
+const TableField: React.FC<ITableField> = ({
+  element,
+  rate,
+  exchangeMainField,
+  showScrollButton,
+}) => {
   const { t } = useTranslation();
   const [currencyLabel, getCurrencyLabel] = useState(element.Cur_Name);
-  const handleCurrencyLabelChange = (element) => {
+  const handleCurrencyLabelChange = (element: any) => {
     getCopyValue(element);
     getCopyMark(currencyLabel, getCurrencyLabel);
   };
@@ -25,7 +31,6 @@ const TableField = ({ element, rate, exchangeMainField, showScrollButton }) => {
         margin="normal"
         variant="filled"
         onClick={handleCurrencyLabelChange}
-        readOnly
       />
       <Change
         label={element.Cur_Name}

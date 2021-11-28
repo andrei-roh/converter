@@ -2,8 +2,9 @@ import ArrowUpwardRounded from '@material-ui/icons/ArrowDropUp';
 import { ButtonField } from './style';
 import getCurrencyName from '../../utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
+import { IChange } from '../../../../types';
 
-const Change = ({ label, value, id, exchangeMainField }) => {
+const Change: React.FC<IChange> = ({ label, value, id, exchangeMainField }) => {
   const { t } = useTranslation();
   const handleButtonClick = () => {
     exchangeMainField(label, value, id);
