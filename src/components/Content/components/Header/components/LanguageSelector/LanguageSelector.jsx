@@ -13,6 +13,7 @@ import {
   LanguageLocale,
 } from './style';
 import i18n from '../../../../../../i18n';
+import { useTranslation } from 'react-i18next';
 
 const LanguageSelector = ({
   anchorMenu,
@@ -21,6 +22,7 @@ const LanguageSelector = ({
   language,
   onfetchChangeLanguage,
 }) => {
+  const { t } = useTranslation();
   const openLanguageMenu = Boolean(anchorMenu);
   const handleOpenLanguageMenu = (element) => {
     onfetchMenuOpen(element.currentTarget);
@@ -34,6 +36,7 @@ const LanguageSelector = ({
     <>
       <LanguageIconButton
         id="language-button"
+        title={t('changeLanguage')}
         aria-controls="language-menu"
         aria-haspopup="true"
         aria-expanded={openLanguageMenu ? 'true' : undefined}

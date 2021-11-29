@@ -1,4 +1,4 @@
-const getCurrencyName = (value) => {
+const getCurrencyName = (value: string) => {
   switch (value) {
     case 'Белорусский рубль':
       return 'belarusianRouble';

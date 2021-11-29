@@ -1,4 +1,3 @@
-import React from 'react';
 import Loader from 'react-loader-spinner';
 import { BigBlock, SmallBlock } from './style';
 

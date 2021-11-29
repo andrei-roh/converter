@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchBelarusRubleRate, fetchSwitchTheme } from './redux/actions';
+import { fetchBelarusRubleRate } from './redux/actions';
 import Spinner from './Spinner/Spinner';
 import Error from './Error/Error';
 import Content from './Content/Content';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles';
 import { lightTheme, darkTheme } from './themes';
+import { IMain, State } from '../types';
 
-const Main = ({
+const Main: React.FC<IMain> = ({
   loading,
   error,
   defaultValue,
@@ -39,19 +40,18 @@ const Main = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   loading: state.loading,
   error: state.error,
   defaultValue: state.defaultValue,
   belarusRuble: state.belarusRuble,
-  belarusianRubleRate: state.belarusianRubleRate,
   belarusRubleToOther: state.belarusRubleToOther,
   theme: state.theme,
+  showDark: state.showDark,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
   onfetchBelarusRubleRate: () => dispatch(fetchBelarusRubleRate()),
-  onfetchSwitchTheme: (theme) => dispatch(fetchSwitchTheme(theme)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
