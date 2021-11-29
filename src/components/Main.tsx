@@ -45,7 +45,6 @@ const mapStateToProps = (state: State) => ({
   error: state.error,
   defaultValue: state.defaultValue,
   belarusRuble: state.belarusRuble,
-  belarusianRubleRate: state.belarusianRubleRate,
   belarusRubleToOther: state.belarusRubleToOther,
   theme: state.theme,
   showDark: state.showDark,

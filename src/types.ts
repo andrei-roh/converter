@@ -18,7 +18,6 @@ export interface IContent {
 
 export interface State extends IError, IContent {
   loading: boolean;
-  belarusianRubleRate: any;
   theme: string;
   showDark: boolean;
 }
@@ -32,22 +31,22 @@ export interface IChange {
   label: string;
   value: number;
   id: number;
-  exchangeMainField: any;
+  exchangeMainField: (label: string, value: number, id: number) => void;
 }
 
 export interface ITableField {
   element: any;
   rate: number;
-  exchangeMainField: any;
+  exchangeMainField: (label: string, value: number, id: number) => void;
   showScrollButton: boolean;
 }
 
 export interface IHeader {
   mainLabelValue: string;
   mainFieldValue: number;
-  handleMainFieldChange: any;
+  handleMainFieldChange: (element: { target: { value: number } }) => void;
 }
 
 export interface IMain extends State {
-  onfetchBelarusRubleRate: any;
+  onfetchBelarusRubleRate: () => void;
 }

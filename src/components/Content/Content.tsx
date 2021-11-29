@@ -18,10 +18,10 @@ const Content: React.FC<IContent> = ({
   const handleShowAllCourses = () => {
     setShowAllCourses(!showAllCourses);
   };
-  const [mainFieldValue, setMainFieldValue] = useState(
+  const [mainFieldValue, setMainFieldValue] = useState<number>(
     belarusRuble.Cur_OfficialRate
   );
-  const handleMainFieldChange = (element: any) => {
+  const handleMainFieldChange = (element: { target: { value: number } }) => {
     setMainFieldValue(element.target.value);
   };
   const [currentMainId, setCurrentMainId] = useState(1);
