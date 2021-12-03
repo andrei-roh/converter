@@ -1,4 +1,3 @@
-import { fetchMenuClose } from './components/redux/actions';
 export interface Currency {
   Cur_Abbreviation: string;
   Cur_ID: number;

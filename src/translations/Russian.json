@@ -33,5 +33,6 @@
     "switchTo": "Переключить на",
     "changeTheme": "Сменить тему",
     "changeLanguage": "Сменить язык",
-    "scrollUp": "Прокрутить вверх"
+    "scrollUp": "Прокрутить вверх",
+    "currencyForExchange": "Валюта для обмена"
 }

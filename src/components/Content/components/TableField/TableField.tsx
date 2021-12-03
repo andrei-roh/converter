@@ -25,9 +25,13 @@ const TableField: React.FC<ITableField> = ({
   return (
     <TextFieldBlock key={element.Cur_ID}>
       <SmallTextField
-        label={t(getCurrencyName(currencyLabel))}
+        label={
+          rate
+            ? t(getCurrencyName(currencyLabel))
+            : t(getCurrencyName('currencyForExchange'))
+        }
         type="text"
-        value={getFormatNumber(rate)}
+        value={getFormatNumber(rate, t(getCurrencyName(currencyLabel)))}
         margin="normal"
         variant="filled"
         onClick={handleCurrencyLabelChange}
