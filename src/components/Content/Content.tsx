@@ -21,7 +21,7 @@ const Content: React.FC<IContent> = ({
   const [mainFieldValue, setMainFieldValue] = useState<number>(
     belarusRuble.Cur_OfficialRate
   );
-  const handleMainFieldChange = (element: { target: { value: number } }) => {
+  const handleMainFieldChange = (element: any) => {
     setMainFieldValue(element.target.value);
   };
   const [currentMainId, setCurrentMainId] = useState(1);

@@ -14,8 +14,9 @@ import {
 } from './style';
 import i18n from '../../../../../../i18n';
 import { useTranslation } from 'react-i18next';
+import { ILanguageSelector, State } from '../../../../../../types';
 
-const LanguageSelector = ({
+const LanguageSelector: React.FC<ILanguageSelector> = ({
   anchorMenu,
   onfetchMenuOpen,
   onfetchMenuClose,
@@ -24,11 +25,11 @@ const LanguageSelector = ({
 }) => {
   const { t } = useTranslation();
   const openLanguageMenu = Boolean(anchorMenu);
-  const handleOpenLanguageMenu = (element) => {
+  const handleOpenLanguageMenu = (element: any) => {
     onfetchMenuOpen(element.currentTarget);
   };
-  const chooseLanguage = (element) => {
-    onfetchMenuClose();
+  const chooseLanguage = (element: any) => {
+    onfetchMenuClose(anchorMenu);
     onfetchChangeLanguage(element.target.id);
     i18n.changeLanguage(element.target.id);
   };
@@ -71,15 +72,18 @@ const LanguageSelector = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   anchorMenu: state.anchorMenu,
   language: state.language,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onfetchMenuOpen: (currentTarget) => dispatch(fetchMenuOpen(currentTarget)),
-  onfetchMenuClose: () => dispatch(fetchMenuClose()),
-  onfetchChangeLanguage: (language) => dispatch(fetchChangeLanguage(language)),
+const mapDispatchToProps = (dispatch: any) => ({
+  onfetchMenuOpen: (currentTarget: any) =>
+    dispatch(fetchMenuOpen(currentTarget)),
+  onfetchMenuClose: (anchorMenu: null | HTMLElement) =>
+    dispatch(fetchMenuClose(anchorMenu)),
+  onfetchChangeLanguage: (language: string) =>
+    dispatch(fetchChangeLanguage(language)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LanguageSelector);

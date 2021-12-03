@@ -3,8 +3,9 @@ import { WbSunny, Brightness2 } from '@material-ui/icons';
 import { DarkIconButton } from './style';
 import { fetchSwitchTheme } from '../../../../../redux/actions';
 import { useTranslation } from 'react-i18next';
+import { IDark, State } from '../../../../../../types';
 
-const Dark = ({ theme, showDark, onfetchSwitchTheme }) => {
+const Dark: React.FC<IDark> = ({ theme, showDark, onfetchSwitchTheme }) => {
   const { t } = useTranslation();
   return (
     <DarkIconButton
@@ -16,13 +17,13 @@ const Dark = ({ theme, showDark, onfetchSwitchTheme }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   showDark: state.showDark,
   theme: state.theme,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onfetchSwitchTheme: (showDark, theme) =>
+const mapDispatchToProps = (dispatch: any) => ({
+  onfetchSwitchTheme: (showDark: boolean, theme: string) =>
     dispatch(fetchSwitchTheme(showDark, theme)),
 });
 
