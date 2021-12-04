@@ -39,7 +39,7 @@ export const fetchMenuOpen = (currentTarget: any) => {
   };
 };
 
-export const fetchMenuClose = (anchorMenu: number) => ({
+export const fetchMenuClose = (anchorMenu: null | HTMLElement) => ({
   type: MENU_CLOSE,
   payload: anchorMenu,
 });

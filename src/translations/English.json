@@ -33,5 +33,6 @@
     "switchTo": "Switch to",
     "changeTheme": "Change theme",
     "changeLanguage": "Change language",
-    "scrollUp": "Scroll up"
+    "scrollUp": "Scroll up",
+    "currencyForExchange": "Currency for exchange"
 }

@@ -2,8 +2,9 @@ import { MainBlock, MainTextField } from './style';
 import getSelectValue from '../../../../utils/getSelectValue';
 import getCurrencyName from '../../../../utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
+import { IHeader } from '../../../../../../types';
 
-const EntryField = ({
+const EntryField: React.FC<IHeader> = ({
   mainLabelValue,
   mainFieldValue,
   handleMainFieldChange,
@@ -13,7 +14,7 @@ const EntryField = ({
     <MainBlock>
       <MainTextField
         label={t(getCurrencyName(mainLabelValue))}
-        value={mainFieldValue}
+        value={mainFieldValue ? mainFieldValue : ''}
         color="primary"
         variant="outlined"
         autoFocus={false}

@@ -1,12 +1,18 @@
-const createOtherRate = (currencyId, setCurrencyId, currencyList) => {
+import { Currency } from '../../../types';
+
+const createOtherRate = (
+  currencyId: number,
+  setCurrencyId: (arg0: number) => void,
+  currencyList: any
+) => {
   setCurrencyId(currencyId);
   const coefficientCur_OfficialRate = currencyList.find(
-    (element) => element.Cur_ID === currencyId
+    (element: Currency) => element.Cur_ID === currencyId
   ).Cur_OfficialRate;
   const coefficientCur_Scale = currencyList.find(
-    (element) => element.Cur_ID === currencyId
+    (element: Currency) => element.Cur_ID === currencyId
   ).Cur_Scale;
-  currencyList.map((element) => {
+  currencyList.map((element: Currency) => {
     if (element.Cur_ID === currencyId) {
       element.Cur_Scale = 1;
       return (element.Cur_OfficialRate = 1);

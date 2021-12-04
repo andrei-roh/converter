@@ -20,6 +20,8 @@ export interface State extends IError, IContent {
   loading: boolean;
   theme: string;
   showDark: boolean;
+  anchorMenu: null | HTMLElement;
+  language: string;
 }
 
 export interface Action {
@@ -44,9 +46,23 @@ export interface ITableField {
 export interface IHeader {
   mainLabelValue: string;
   mainFieldValue: number;
-  handleMainFieldChange: (element: { target: { value: number } }) => void;
+  handleMainFieldChange: any;
 }
 
 export interface IMain extends State {
   onfetchBelarusRubleRate: () => void;
+}
+
+export interface ILanguageSelector {
+  anchorMenu: null | HTMLElement;
+  onfetchMenuOpen: (currentTarget: any) => void;
+  onfetchMenuClose: any;
+  language: string;
+  onfetchChangeLanguage: (language: string) => void;
+}
+
+export interface IDark {
+  theme: string;
+  showDark: boolean;
+  onfetchSwitchTheme: (showDark: boolean, theme: string) => void;
 }
