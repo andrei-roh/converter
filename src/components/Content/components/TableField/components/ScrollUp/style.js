@@ -4,6 +4,7 @@ export const ButtonBlock = styled.div`
   position: fixed;
   bottom: 20px;
   right: 1.5px;
+  z-index: 2;
 
   @media (min-width: 501px) {
     bottom: 10px;
