@@ -1,4 +1,4 @@
-import getRate from './getRate';
+import getRate from '../../components/Content/utils/getRate';
 
 describe('format object', () => {
   it('return the selected value', () => {
