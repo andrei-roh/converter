@@ -9,6 +9,7 @@ import {
   CHANGE_LANGUAGE,
 } from './types';
 import { Action } from '../../types';
+import { nationalBankURL } from '../../endpoints';
 
 const initialState = {
   loading: false,
@@ -26,6 +27,7 @@ const initialState = {
   showDark: false,
   theme: 'light',
   language: 'en',
+  endpoint: nationalBankURL,
 };
 
 const rootReducer = (state = initialState, action: Action) => {

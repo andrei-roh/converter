@@ -8,7 +8,6 @@ import {
   SET_THEME,
   CHANGE_LANGUAGE,
 } from './types';
-import { URL } from '../../endpoints';
 
 export const fetchStart = () => ({ type: FETCH_START });
 
@@ -22,13 +21,13 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
   payload: currency,
 });
 
-export const fetchBelarusRubleRate = () => (dispatch: any) => {
+export const fetchBelarusRubleRate = (url: string) => (dispatch: any) => {
   dispatch(fetchStart());
-  return fetch(`${URL}/rates?periodicity=0`, { method: 'GET' })
+  return fetch(url, { method: 'GET' })
     .then((response) => response.json())
     .then((content) => dispatch(fetchBelarusRubleRateEnd(content)))
-    .catch(() => {
-      dispatch(fetchError('Ошибка получения курсов'));
+    .catch((error) => {
+      dispatch(fetchError(String(error)));
     });
 };
 

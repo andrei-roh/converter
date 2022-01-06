@@ -22,6 +22,7 @@ export interface State extends IError, IContent {
   showDark: boolean;
   anchorMenu: null | HTMLElement;
   language: string;
+  endpoint: string;
 }
 
 export interface Action {
@@ -50,7 +51,7 @@ export interface IHeader {
 }
 
 export interface IMain extends State {
-  onfetchBelarusRubleRate: () => void;
+  onfetchBelarusRubleRate: (url: string) => void;
 }
 
 export interface ILanguageSelector {
