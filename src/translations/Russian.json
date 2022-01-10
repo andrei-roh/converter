@@ -34,5 +34,7 @@
     "changeTheme": "Сменить тему",
     "changeLanguage": "Сменить язык",
     "scrollUp": "Прокрутить вверх",
-    "currencyForExchange": "Валюта для обмена"
+    "currencyForExchange": "Валюта для обмена",
+    "nationalBank": "Национальный Банк",
+    "belarusBank": "Беларусбанк"
 }

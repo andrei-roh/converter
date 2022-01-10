@@ -2,11 +2,14 @@ import {
   FETCH_START,
   FETCH_ERROR,
   BELARUS_RUBLE_RATE_TO_OTHER,
-  MENU_OPEN,
-  MENU_CLOSE,
+  LANGUAGE_MENU_OPEN,
+  LANGUAGE_MENU_CLOSE,
   SET_SHOW_DARK,
   SET_THEME,
   CHANGE_LANGUAGE,
+  CHANGE_BANK,
+  BANK_MENU_OPEN,
+  BANK_MENU_CLOSE,
 } from './types';
 
 export const fetchStart = () => ({ type: FETCH_START });
@@ -31,16 +34,18 @@ export const fetchBelarusRubleRate = (url: string) => (dispatch: any) => {
     });
 };
 
-export const fetchMenuOpen = (currentTarget: any) => {
+export const fetchLanguageMenuOpen = (currentTarget: any) => {
   return {
-    type: MENU_OPEN,
+    type: LANGUAGE_MENU_OPEN,
     payload: currentTarget,
   };
 };
 
-export const fetchMenuClose = (anchorMenu: null | HTMLElement) => ({
-  type: MENU_CLOSE,
-  payload: anchorMenu,
+export const fetchLanguageMenuClose = (
+  anchorLanguageMenu: null | HTMLElement
+) => ({
+  type: LANGUAGE_MENU_CLOSE,
+  payload: anchorLanguageMenu,
 });
 
 export const fetchSetShowDark = (showDark: boolean) => ({
@@ -64,4 +69,22 @@ export const fetchSwitchTheme =
 export const fetchChangeLanguage = (language: string) => ({
   type: CHANGE_LANGUAGE,
   payload: language,
+});
+
+export const fetchChangeBank = (bank: string, endpoint: string) => ({
+  type: CHANGE_BANK,
+  payload: bank,
+  endpoint: endpoint,
+});
+
+export const fetchBankMenuOpen = (currentTarget: any) => {
+  return {
+    type: BANK_MENU_OPEN,
+    payload: currentTarget,
+  };
+};
+
+export const fetchBankMenuClose = (anchorBankMenu: null | HTMLElement) => ({
+  type: BANK_MENU_CLOSE,
+  payload: anchorBankMenu,
 });

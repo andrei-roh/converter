@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Language } from '@material-ui/icons';
 import {
-  fetchMenuOpen,
-  fetchMenuClose,
+  fetchLanguageMenuOpen,
+  fetchLanguageMenuClose,
   fetchChangeLanguage,
 } from '../../../../../redux/actions';
 import {
@@ -17,19 +17,19 @@ import { useTranslation } from 'react-i18next';
 import { ILanguageSelector, State } from '../../../../../../types';
 
 const LanguageSelector: React.FC<ILanguageSelector> = ({
-  anchorMenu,
-  onfetchMenuOpen,
-  onfetchMenuClose,
+  anchorLanguageMenu,
+  onfetchLanguageMenuOpen,
+  onfetchLanguageMenuClose,
   language,
   onfetchChangeLanguage,
 }) => {
   const { t } = useTranslation();
-  const openLanguageMenu = Boolean(anchorMenu);
+  const openLanguageMenu = Boolean(anchorLanguageMenu);
   const handleOpenLanguageMenu = (element: any) => {
-    onfetchMenuOpen(element.currentTarget);
+    onfetchLanguageMenuOpen(element.currentTarget);
   };
   const chooseLanguage = (element: any) => {
-    onfetchMenuClose(anchorMenu);
+    onfetchLanguageMenuClose(anchorLanguageMenu);
     onfetchChangeLanguage(element.target.id);
     i18n.changeLanguage(element.target.id);
   };
@@ -49,9 +49,9 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
       <LanguageMenu
         id="language-menu"
         variant="selectedMenu"
-        anchorEl={anchorMenu}
+        anchorEl={anchorLanguageMenu}
         open={openLanguageMenu}
-        onClose={onfetchMenuClose}
+        onClose={onfetchLanguageMenuClose}
         disableScrollLock={true}
         MenuListProps={{
           'aria-labelledby': 'language-button',
@@ -73,15 +73,15 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
 };
 
 const mapStateToProps = (state: State) => ({
-  anchorMenu: state.anchorMenu,
+  anchorLanguageMenu: state.anchorLanguageMenu,
   language: state.language,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onfetchMenuOpen: (currentTarget: any) =>
-    dispatch(fetchMenuOpen(currentTarget)),
-  onfetchMenuClose: (anchorMenu: null | HTMLElement) =>
-    dispatch(fetchMenuClose(anchorMenu)),
+  onfetchLanguageMenuOpen: (currentTarget: any) =>
+    dispatch(fetchLanguageMenuOpen(currentTarget)),
+  onfetchLanguageMenuClose: (anchorLanguageMenu: null | HTMLElement) =>
+    dispatch(fetchLanguageMenuClose(anchorLanguageMenu)),
   onfetchChangeLanguage: (language: string) =>
     dispatch(fetchChangeLanguage(language)),
 });

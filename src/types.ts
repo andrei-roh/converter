@@ -20,9 +20,11 @@ export interface State extends IError, IContent {
   loading: boolean;
   theme: string;
   showDark: boolean;
-  anchorMenu: null | HTMLElement;
+  anchorLanguageMenu: null | HTMLElement;
   language: string;
+  bank: string;
   endpoint: string;
+  anchorBankMenu: null | HTMLElement;
 }
 
 export interface Action {
@@ -55,11 +57,19 @@ export interface IMain extends State {
 }
 
 export interface ILanguageSelector {
-  anchorMenu: null | HTMLElement;
-  onfetchMenuOpen: (currentTarget: any) => void;
-  onfetchMenuClose: any;
+  anchorLanguageMenu: null | HTMLElement;
+  onfetchLanguageMenuOpen: (currentTarget: any) => void;
+  onfetchLanguageMenuClose: any;
   language: string;
   onfetchChangeLanguage: (language: string) => void;
+}
+
+export interface IBankSelector {
+  anchorBankMenu: null | HTMLElement;
+  onfetchBankMenuOpen: (currentTarget: any) => void;
+  onfetchBankMenuClose: any;
+  bank: string;
+  onfetchChangeBank: (bank: string, endpoint: string) => void;
 }
 
 export interface IDark {

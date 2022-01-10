@@ -2,14 +2,19 @@ import {
   FETCH_START,
   FETCH_ERROR,
   BELARUS_RUBLE_RATE_TO_OTHER,
-  MENU_OPEN,
-  MENU_CLOSE,
+  LANGUAGE_MENU_OPEN,
+  LANGUAGE_MENU_CLOSE,
   SET_SHOW_DARK,
   SET_THEME,
   CHANGE_LANGUAGE,
+  CHANGE_BANK,
+  BANK_MENU_OPEN,
+  BANK_MENU_CLOSE,
 } from './types';
 import { Action } from '../../types';
-import { nationalBankURL } from '../../endpoints';
+import { endpoints } from '../../endpoints';
+
+const { nationalBank } = endpoints;
 
 const initialState = {
   loading: false,
@@ -23,11 +28,13 @@ const initialState = {
     Cur_OfficialRate: 1,
     Cur_Scale: 1,
   },
-  anchorMenu: null,
+  anchorLanguageMenu: null,
   showDark: false,
   theme: 'light',
   language: 'en',
-  endpoint: nationalBankURL,
+  bank: nationalBank.name,
+  endpoint: nationalBank.url,
+  anchorBankMenu: null,
 };
 
 const rootReducer = (state = initialState, action: Action) => {
@@ -50,15 +57,15 @@ const rootReducer = (state = initialState, action: Action) => {
         belarusRubleToOther: action.payload,
         loading: false,
       };
-    case MENU_OPEN:
+    case LANGUAGE_MENU_OPEN:
       return {
         ...state,
-        anchorMenu: action.payload,
+        anchorLanguageMenu: action.payload,
       };
-    case MENU_CLOSE:
+    case LANGUAGE_MENU_CLOSE:
       return {
         ...state,
-        anchorMenu: null,
+        anchorLanguageMenu: null,
       };
     case SET_SHOW_DARK:
       return {
@@ -74,6 +81,22 @@ const rootReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         language: action.payload,
+      };
+    case CHANGE_BANK:
+      return {
+        ...state,
+        bank: action.payload,
+        endpoint: action.payload,
+      };
+    case BANK_MENU_OPEN:
+      return {
+        ...state,
+        anchorBankMenu: action.payload,
+      };
+    case BANK_MENU_CLOSE:
+      return {
+        ...state,
+        anchorBankMenu: null,
       };
     default:
       return state;
