@@ -5,6 +5,6 @@ export const endpoints = {
   },
   belarusBank: {
     name: 'belarusBank',
-    url: 'https://belarusbank.by/api/kursExchange',
+    url: 'https://belarusbank.by/api/kursExchange?city=Минск',
   },
 };

@@ -7,5 +7,6 @@ export const SET_SHOW_DARK = 'SET_SHOW_DARK';
 export const SET_THEME = 'SET_THEME';
 export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE';
 export const CHANGE_BANK = 'CHANGE_BANK';
+export const CHANGE_ENDPOINT = 'CHANGE_ENDPOINT';
 export const BANK_MENU_OPEN = 'BANK_MENU_OPEN';
 export const BANK_MENU_CLOSE = 'BANK_MENU_CLOSE';

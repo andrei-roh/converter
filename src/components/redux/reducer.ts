@@ -8,6 +8,7 @@ import {
   SET_THEME,
   CHANGE_LANGUAGE,
   CHANGE_BANK,
+  CHANGE_ENDPOINT,
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
@@ -86,6 +87,10 @@ const rootReducer = (state = initialState, action: Action) => {
       return {
         ...state,
         bank: action.payload,
+      };
+    case CHANGE_ENDPOINT:
+      return {
+        ...state,
         endpoint: action.payload,
       };
     case BANK_MENU_OPEN:

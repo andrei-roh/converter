@@ -69,7 +69,8 @@ export interface IBankSelector {
   onfetchBankMenuOpen: (currentTarget: any) => void;
   onfetchBankMenuClose: any;
   bank: string;
-  onfetchChangeBank: (bank: string, endpoint: string) => void;
+  onfetchChangeBank: (bank: string) => void;
+  onfetchChangeEndpoint: (endpoint: string) => void;
 }
 
 export interface IDark {

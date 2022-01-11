@@ -36,5 +36,6 @@
     "scrollUp": "Прокрутить вверх",
     "currencyForExchange": "Валюта для обмена",
     "nationalBank": "Национальный Банк",
-    "belarusBank": "Беларусбанк"
+    "belarusBank": "Беларусбанк",
+    "changeBank": "Сменить банк"
 }

@@ -22,4 +22,5 @@ export const SmallBlock = styled.div`
 export const Phrase = styled(Typography)`
   padding-top: 20px;
   color: #808080;
+  text-align: center;
 `;

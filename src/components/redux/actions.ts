@@ -8,13 +8,14 @@ import {
   SET_THEME,
   CHANGE_LANGUAGE,
   CHANGE_BANK,
+  CHANGE_ENDPOINT,
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
 
-export const fetchStart = () => ({ type: FETCH_START });
+const fetchStart = () => ({ type: FETCH_START });
 
-export const fetchError = (error: string) => ({
+const fetchError = (error: string) => ({
   type: FETCH_ERROR,
   payload: error,
 });
@@ -24,14 +25,17 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
   payload: currency,
 });
 
-export const fetchBelarusRubleRate = (url: string) => (dispatch: any) => {
+export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   dispatch(fetchStart());
-  return fetch(url, { method: 'GET' })
-    .then((response) => response.json())
-    .then((content) => dispatch(fetchBelarusRubleRateEnd(content)))
-    .catch((error) => {
-      dispatch(fetchError(String(error)));
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
     });
+    const content = await response.json();
+    return dispatch(fetchBelarusRubleRateEnd(content));
+  } catch (error) {
+    dispatch(fetchError(String(error)));
+  }
 };
 
 export const fetchLanguageMenuOpen = (currentTarget: any) => {
@@ -48,12 +52,12 @@ export const fetchLanguageMenuClose = (
   payload: anchorLanguageMenu,
 });
 
-export const fetchSetShowDark = (showDark: boolean) => ({
+const fetchSetShowDark = (showDark: boolean) => ({
   type: SET_SHOW_DARK,
   payload: !showDark,
 });
 
-export const fetchSetTheme = (theme: string) => ({
+const fetchSetTheme = (theme: string) => ({
   type: SET_THEME,
   payload: theme,
 });
@@ -71,10 +75,14 @@ export const fetchChangeLanguage = (language: string) => ({
   payload: language,
 });
 
-export const fetchChangeBank = (bank: string, endpoint: string) => ({
+export const fetchChangeBank = (bank: string) => ({
   type: CHANGE_BANK,
   payload: bank,
-  endpoint: endpoint,
+});
+
+export const fetchChangeEndpoint = (endpoint: string) => ({
+  type: CHANGE_ENDPOINT,
+  payload: endpoint,
 });
 
 export const fetchBankMenuOpen = (currentTarget: any) => {
