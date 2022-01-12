@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import TableField from './components/TableField/TableField';
+import Footer from './components/Footer/Footer';
 import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
 import { BigBlock, SmallBlock, More } from './style';
@@ -94,7 +95,7 @@ const Content: React.FC<IContent> = ({
         handleMainFieldChange={handleMainFieldChange}
       />
       <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
-      {!showAllCourses ? (
+      {!showAllCourses && allContent.length > 3 ? (
         <More
           variant="contained"
           onClick={handleShowAllCourses}
@@ -102,7 +103,9 @@ const Content: React.FC<IContent> = ({
         >
           {t('showMore')}
         </More>
-      ) : null}
+      ) : (
+        <Footer />
+      )}
     </BigBlock>
   );
 };

@@ -1,0 +1,25 @@
+import { EmptyBlock, FooterBlock } from './style';
+import Link from '@material-ui/core/Link';
+
+const Footer = () => {
+  const getCurrentYear = () => {
+    const today = new Date();
+    return today.getFullYear();
+  };
+  return (
+    <>
+      <EmptyBlock />
+      <FooterBlock>
+        <Link
+          underline="none"
+          href="https://github.com/andrei-roh"
+          target="_blank"
+        >
+          {getCurrentYear()}
+        </Link>
+      </FooterBlock>
+    </>
+  );
+};
+
+export default Footer;

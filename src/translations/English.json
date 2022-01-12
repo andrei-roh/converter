@@ -34,5 +34,8 @@
     "changeTheme": "Change theme",
     "changeLanguage": "Change language",
     "scrollUp": "Scroll up",
-    "currencyForExchange": "Currency for exchange"
+    "currencyForExchange": "Currency for exchange",
+    "nationalBank": "National Bank",
+    "belarusBank": "Belarusbank",
+    "changeBank": "Change Bank"
 }

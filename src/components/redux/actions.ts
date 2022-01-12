@@ -2,17 +2,22 @@ import {
   FETCH_START,
   FETCH_ERROR,
   BELARUS_RUBLE_RATE_TO_OTHER,
-  MENU_OPEN,
-  MENU_CLOSE,
+  LANGUAGE_MENU_OPEN,
+  LANGUAGE_MENU_CLOSE,
   SET_SHOW_DARK,
   SET_THEME,
   CHANGE_LANGUAGE,
+  CHANGE_BANK,
+  CHANGE_ENDPOINT,
+  BANK_MENU_OPEN,
+  BANK_MENU_CLOSE,
 } from './types';
-import { URL } from '../../endpoints';
+import { createObject } from '../Content/utils/createObject';
+import { endpoints } from '../../endpoints';
 
-export const fetchStart = () => ({ type: FETCH_START });
+const fetchStart = () => ({ type: FETCH_START });
 
-export const fetchError = (error: string) => ({
+const fetchError = (error: string) => ({
   type: FETCH_ERROR,
   payload: error,
 });
@@ -22,34 +27,41 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
   payload: currency,
 });
 
-export const fetchBelarusRubleRate = () => (dispatch: any) => {
+export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   dispatch(fetchStart());
-  return fetch(`${URL}/rates?periodicity=0`, { method: 'GET' })
-    .then((response) => response.json())
-    .then((content) => dispatch(fetchBelarusRubleRateEnd(content)))
-    .catch(() => {
-      dispatch(fetchError('Ошибка получения курсов'));
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
     });
+    const content = await response.json();
+    const result =
+      url !== endpoints.nationalBank.url ? createObject(content) : content;
+    return dispatch(fetchBelarusRubleRateEnd(result));
+  } catch (error) {
+    dispatch(fetchError(String(error)));
+  }
 };
 
-export const fetchMenuOpen = (currentTarget: any) => {
+export const fetchLanguageMenuOpen = (currentTarget: any) => {
   return {
-    type: MENU_OPEN,
+    type: LANGUAGE_MENU_OPEN,
     payload: currentTarget,
   };
 };
 
-export const fetchMenuClose = (anchorMenu: null | HTMLElement) => ({
-  type: MENU_CLOSE,
-  payload: anchorMenu,
+export const fetchLanguageMenuClose = (
+  anchorLanguageMenu: null | HTMLElement
+) => ({
+  type: LANGUAGE_MENU_CLOSE,
+  payload: anchorLanguageMenu,
 });
 
-export const fetchSetShowDark = (showDark: boolean) => ({
+const fetchSetShowDark = (showDark: boolean) => ({
   type: SET_SHOW_DARK,
   payload: !showDark,
 });
 
-export const fetchSetTheme = (theme: string) => ({
+const fetchSetTheme = (theme: string) => ({
   type: SET_THEME,
   payload: theme,
 });
@@ -65,4 +77,26 @@ export const fetchSwitchTheme =
 export const fetchChangeLanguage = (language: string) => ({
   type: CHANGE_LANGUAGE,
   payload: language,
+});
+
+export const fetchChangeBank = (bank: string) => ({
+  type: CHANGE_BANK,
+  payload: bank,
+});
+
+export const fetchChangeEndpoint = (endpoint: string) => ({
+  type: CHANGE_ENDPOINT,
+  payload: endpoint,
+});
+
+export const fetchBankMenuOpen = (currentTarget: any) => {
+  return {
+    type: BANK_MENU_OPEN,
+    payload: currentTarget,
+  };
+};
+
+export const fetchBankMenuClose = (anchorBankMenu: null | HTMLElement) => ({
+  type: BANK_MENU_CLOSE,
+  payload: anchorBankMenu,
 });

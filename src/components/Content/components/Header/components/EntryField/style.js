@@ -5,6 +5,10 @@ export const MainBlock = styled.div`
   min-width: 250px;
   width: 20%;
   margin: 0 8px;
+
+  @media (min-width: 769px) {
+    margin: 0 20px 0 10px;
+  }
 `;
 
 export const MainTextField = styled(TextField)(({ theme }) => ({
