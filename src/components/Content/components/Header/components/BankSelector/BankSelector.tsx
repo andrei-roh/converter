@@ -33,7 +33,6 @@ const BankSelector: React.FC<IBankSelector> = ({
   };
   const chooseBank = (element: any) => {
     let endpoint = getEndpointLink(element.target.id);
-    console.log(endpoint);
     onfetchBankMenuClose(anchorBankMenu);
     onfetchChangeBank(element.target.id);
     onfetchChangeEndpoint(endpoint);

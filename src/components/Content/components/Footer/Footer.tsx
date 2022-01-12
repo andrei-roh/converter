@@ -1,4 +1,5 @@
-import { FooterBlock } from './style';
+import { EmptyBlock, FooterBlock } from './style';
+import Link from '@material-ui/core/Link';
 
 const Footer = () => {
   const getCurrentYear = () => {
@@ -7,7 +8,16 @@ const Footer = () => {
   };
   return (
     <>
-      <FooterBlock>{getCurrentYear()}</FooterBlock>
+      <EmptyBlock />
+      <FooterBlock>
+        <Link
+          underline="none"
+          href="https://github.com/andrei-roh"
+          target="_blank"
+        >
+          {getCurrentYear()}
+        </Link>
+      </FooterBlock>
     </>
   );
 };

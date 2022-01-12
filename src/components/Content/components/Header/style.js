@@ -10,7 +10,7 @@ export const EmptyBlock = styled.div`
 `;
 
 export const HeaderBlock = styled.div`
-  padding: 5px 0;
+  padding: 12px 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.12);
   display: flex;

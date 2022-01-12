@@ -12,6 +12,8 @@ import {
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
+import { createObject } from '../Content/utils/createObject';
+import { endpoints } from '../../endpoints';
 
 const fetchStart = () => ({ type: FETCH_START });
 
@@ -32,7 +34,9 @@ export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
       method: 'GET',
     });
     const content = await response.json();
-    return dispatch(fetchBelarusRubleRateEnd(content));
+    const result =
+      url !== endpoints.nationalBank.url ? createObject(content) : content;
+    return dispatch(fetchBelarusRubleRateEnd(result));
   } catch (error) {
     dispatch(fetchError(String(error)));
   }

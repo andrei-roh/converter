@@ -95,7 +95,7 @@ const Content: React.FC<IContent> = ({
         handleMainFieldChange={handleMainFieldChange}
       />
       <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
-      {!showAllCourses ? (
+      {!showAllCourses && allContent.length > 3 ? (
         <More
           variant="contained"
           onClick={handleShowAllCourses}
