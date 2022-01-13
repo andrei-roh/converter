@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const EmptyBlock = styled.div`
-  height: 172px;
+  height: 144px;
   width: 100%;
 
   @media (min-width: 769px) {
@@ -30,7 +30,31 @@ export const HeaderBlock = styled.div`
 `;
 
 export const IconsBlock = styled.div`
+  width: 60%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  margin-bottom: 8px;
+
+  @media (min-width: 769px) {
+    width: auto;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+`;
+
+export const MobileSelector = styled.div`
+  display: inherit;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+export const DesktopSelector = styled.div`
+  display: none;
+
+  @media (min-width: 769px) {
+    display: inherit;
+  }
 `;

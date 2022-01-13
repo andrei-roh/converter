@@ -12,6 +12,7 @@ const Footer = () => {
       <FooterBlock>
         <Link
           underline="none"
+          color="inherit"
           href="https://github.com/andrei-roh"
           target="_blank"
         >

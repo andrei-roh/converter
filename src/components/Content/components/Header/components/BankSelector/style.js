@@ -5,6 +5,7 @@ export const BankIconButton = styled(IconButton)`
   margin-bottom: 10px;
   color: ${({ theme }) => theme.text} !important;
   cursor: pointer;
+  order: 2;
 
   &:focus {
     color: #3f51b5 !important;
