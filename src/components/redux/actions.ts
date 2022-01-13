@@ -12,7 +12,7 @@ import {
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
-import { createObject } from '../Content/utils/createObject';
+import { createBelarusbankObject } from '../Content/utils/createBelarusbankObject';
 import { endpoints } from '../../endpoints';
 
 const fetchStart = () => ({ type: FETCH_START });
@@ -30,12 +30,12 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
 export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   dispatch(fetchStart());
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-    });
+    const response = await fetch(`https://jsonp.afeld.me/?url=${url}`);
     const content = await response.json();
     const result =
-      url !== endpoints.nationalBank.url ? createObject(content) : content;
+      url !== endpoints.nationalBank.url
+        ? createBelarusbankObject(content)
+        : content;
     return dispatch(fetchBelarusRubleRateEnd(result));
   } catch (error) {
     dispatch(fetchError(String(error)));

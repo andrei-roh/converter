@@ -15,4 +15,6 @@ export const FooterBlock = styled.div`
   margin-top: 30px;
   position: fixed;
   bottom: 0;
+  z-index: 2;
+  backdrop-filter: blur(6px);
 `;
