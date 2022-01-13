@@ -1,6 +1,6 @@
 import { emptyObject } from './emptyObject';
 
-export const createObject = (object: any) => {
+export const createBelarusbankObject = (object: any) => {
   return emptyObject
     .map((element) => {
       return {
