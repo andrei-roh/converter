@@ -13,7 +13,7 @@ import {
   BANK_MENU_CLOSE,
 } from './types';
 import { createBelarusbankObject } from '../Content/utils/createBelarusbankObject';
-import { endpoints } from '../../endpoints';
+import { endpoints } from 'endpoints';
 
 const fetchStart = () => ({ type: FETCH_START });
 

@@ -1,7 +1,7 @@
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
-export const BigBlock = styled.div`
+export const Edge = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@ export const BigBlock = styled.div`
   width: 100%;
 `;
 
-export const SmallBlock = styled.div`
+export const Mistake = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;

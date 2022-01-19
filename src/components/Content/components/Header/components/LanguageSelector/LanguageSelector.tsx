@@ -5,16 +5,16 @@ import {
   fetchLanguageMenuOpen,
   fetchLanguageMenuClose,
   fetchChangeLanguage,
-} from '../../../../../redux/actions';
+} from 'components/redux/actions';
 import {
   LanguageIconButton,
   LanguageMenu,
   LanguageMenuItem,
   LanguageLocale,
 } from './style';
-import i18n from '../../../../../../i18n';
+import i18n from 'i18n';
 import { useTranslation } from 'react-i18next';
-import { ILanguageSelector, State } from '../../../../../../types';
+import { ILanguageSelector, State } from 'types';
 
 const LanguageSelector: React.FC<ILanguageSelector> = ({
   anchorLanguageMenu,
@@ -38,6 +38,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
       <LanguageIconButton
         id="language-button"
         title={t('changeLanguage')}
+        aria-labelledby={t('changeLanguage')}
         aria-controls="language-menu"
         aria-haspopup="true"
         aria-expanded={openLanguageMenu ? 'true' : undefined}

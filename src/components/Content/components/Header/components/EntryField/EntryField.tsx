@@ -1,8 +1,8 @@
 import { MainBlock, MainTextField } from './style';
-import getSelectValue from '../../../../utils/getSelectValue';
-import getCurrencyName from '../../../../utils/getCurrencyName';
+import getSelectValue from 'components/Content/utils/getSelectValue';
+import getCurrencyName from 'components/Content/utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
-import { IHeader } from '../../../../../../types';
+import { IHeader } from 'types';
 
 const EntryField: React.FC<IHeader> = ({
   mainLabelValue,

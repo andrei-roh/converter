@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Change from '../Change/Change';
 import { TextFieldBlock, SmallTextField } from './style';
-import getFormatNumber from '../../utils/getFormatNumber';
+import getFormatNumber from 'components/Content/utils/getFormatNumber';
 import ScrollUp from './components/ScrollUp/ScrollUp';
-import getCopyValue from '../../utils/getCopyValue';
-import getCopyMark from '../../utils/getCopyMark';
-import getCurrencyName from '../../utils/getCurrencyName';
+import getCopyValue from 'components/Content/utils/getCopyValue';
+import getCopyMark from 'components/Content/utils/getCopyMark';
+import getCurrencyName from 'components/Content/utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
-import { ITableField } from '../../../../types';
+import { ITableField } from 'types';
 
 const TableField: React.FC<ITableField> = ({
   element,

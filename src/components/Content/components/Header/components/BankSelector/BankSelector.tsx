@@ -6,11 +6,11 @@ import {
   fetchBankMenuClose,
   fetchChangeBank,
   fetchChangeEndpoint,
-} from '../../../../../redux/actions';
+} from 'components/redux/actions';
 import { BankIconButton, BankMenu, BankMenuItem, BankLocale } from './style';
 import { useTranslation } from 'react-i18next';
-import { IBankSelector, State } from '../../../../../../types';
-import { endpoints } from '../../../../../../endpoints';
+import { IBankSelector, State } from 'types';
+import { endpoints } from 'endpoints';
 
 const BankSelector: React.FC<IBankSelector> = ({
   anchorBankMenu,
@@ -42,6 +42,7 @@ const BankSelector: React.FC<IBankSelector> = ({
       <BankIconButton
         id="bank-button"
         title={t('changeBank')}
+        aria-labelledby={t('changeBank')}
         aria-controls="bank-menu"
         aria-haspopup="true"
         aria-expanded={openBankMenu ? 'true' : undefined}

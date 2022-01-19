@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
-export const BigBlock = styled.div`
+export const Full = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,7 +11,7 @@ export const BigBlock = styled.div`
   width: 100%;
 `;
 
-export const SmallBlock = styled.div`
+export const Starter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
