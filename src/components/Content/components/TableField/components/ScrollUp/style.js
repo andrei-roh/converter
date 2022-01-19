@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonBlock = styled.div`
+export const ScrollUpBlock = styled.div`
   position: fixed;
   bottom: 10px;
   right: 6px;

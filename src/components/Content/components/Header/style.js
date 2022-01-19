@@ -56,5 +56,6 @@ export const DesktopSelector = styled.div`
 
   @media (min-width: 769px) {
     display: inherit;
+    width: 96px;
   }
 `;

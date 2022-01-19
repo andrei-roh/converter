@@ -12,8 +12,8 @@ import {
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
-import { Action } from '../../types';
-import { endpoints } from '../../endpoints';
+import { Action } from 'types';
+import { endpoints } from 'endpoints';
 
 const { nationalBank } = endpoints;
 

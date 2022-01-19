@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BigBlock = styled.div`
+export const Edge = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -10,7 +10,7 @@ export const BigBlock = styled.div`
   height: 100vh;
 `;
 
-export const SmallBlock = styled.div`
+export const Wheel = styled.div`
   align-self: center;
   position: absolute;
   top: 50%;

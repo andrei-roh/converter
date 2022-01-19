@@ -4,9 +4,9 @@ import TableField from './components/TableField/TableField';
 import Footer from './components/Footer/Footer';
 import createOtherRate from './utils/createOtherRate';
 import getRate from './utils/getRate';
-import { BigBlock, SmallBlock, More } from './style';
+import { Full, Starter, More } from './style';
 import { useTranslation } from 'react-i18next';
-import { IContent } from '../../types';
+import { IContent } from 'types';
 
 const Content: React.FC<IContent> = ({
   defaultValue,
@@ -88,13 +88,13 @@ const Content: React.FC<IContent> = ({
     ) : null;
   });
   return (
-    <BigBlock>
+    <Full>
       <Header
         mainLabelValue={mainLabelValue}
         mainFieldValue={mainFieldValue}
         handleMainFieldChange={handleMainFieldChange}
       />
-      <SmallBlock>{!showAllCourses ? defaultContent : allContent}</SmallBlock>
+      <Starter>{!showAllCourses ? defaultContent : allContent}</Starter>
       {!showAllCourses && allContent.length > 3 ? (
         <More
           variant="contained"
@@ -106,7 +106,7 @@ const Content: React.FC<IContent> = ({
       ) : (
         <Footer />
       )}
-    </BigBlock>
+    </Full>
   );
 };
 

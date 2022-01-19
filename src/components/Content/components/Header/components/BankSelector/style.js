@@ -32,7 +32,7 @@ export const BankMenuItem = styled(MenuItem)`
 
 export const BankLocale = styled.div`
   position: absolute;
-  width: 70px;
+  width: 100px;
   bottom: 2px;
   font-size: 10px;
 `;

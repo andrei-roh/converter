@@ -7,7 +7,7 @@ export const MainBlock = styled.div`
   margin: 0 8px 8px;
 
   @media (min-width: 769px) {
-    margin: 0 20px 0 10px;
+    margin: 0 35px;
   }
 `;
 
