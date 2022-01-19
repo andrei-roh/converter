@@ -32,7 +32,7 @@ const initialState = {
   anchorLanguageMenu: null,
   showDark: false,
   theme: 'light',
-  language: 'en',
+  language: 'be',
   bank: nationalBank.name,
   endpoint: nationalBank.url,
   anchorBankMenu: null,
