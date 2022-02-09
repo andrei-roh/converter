@@ -33,14 +33,18 @@ const TableField: React.FC<ITableField> = ({
         type="text"
         value={getFormatNumber(rate, t(getCurrencyName(currencyLabel)))}
         margin="normal"
-        variant="filled"
+        variant="outlined"
         onClick={handleCurrencyLabelChange}
-      />
-      <Change
-        label={element.Cur_Name}
-        value={rate}
-        id={element.Cur_ID}
-        exchangeMainField={exchangeMainField}
+        InputProps={{
+          endAdornment: (
+            <Change
+              label={element.Cur_Name}
+              value={rate}
+              id={element.Cur_ID}
+              exchangeMainField={exchangeMainField}
+            />
+          ),
+        }}
       />
       {showScrollButton ? <ScrollUp /> : null}
     </TextFieldBlock>

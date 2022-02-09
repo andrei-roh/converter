@@ -1,5 +1,5 @@
-import ArrowUpwardRounded from '@material-ui/icons/ArrowDropUp';
-import { ChangeButton } from './style';
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
+import { Button } from 'components/themes';
 import getCurrencyName from 'components/Content/utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
 import { IChange } from 'types';
@@ -10,12 +10,12 @@ const Change: React.FC<IChange> = ({ label, value, id, exchangeMainField }) => {
     exchangeMainField(label, value, id);
   };
   return (
-    <ChangeButton
+    <Button
       onClick={handleButtonClick}
       title={`${t('switchTo')} ${t(getCurrencyName(label))}`}
     >
-      <ArrowUpwardRounded />
-    </ChangeButton>
+      <KeyboardArrowUp />
+    </Button>
   );
 };
 

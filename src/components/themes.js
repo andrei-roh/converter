@@ -1,3 +1,6 @@
+import styled from 'styled-components';
+import { IconButton } from '@material-ui/core';
+
 export const lightTheme = {
   body: '#FFF',
   text: '#363537',
@@ -13,3 +16,15 @@ export const darkTheme = {
   change: '#363537',
   more: '#363537',
 };
+
+export const Button = styled(IconButton)`
+  color: ${({ theme }) => theme.text} !important;
+
+  &:focus {
+    color: #3f51b5 !important;
+  }
+
+  &:focus-visible {
+    color: #3f51b5 !important;
+  }
+`;

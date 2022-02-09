@@ -30,7 +30,7 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
 export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   dispatch(fetchStart());
   try {
-    const response = await fetch(`https://jsonp.afeld.me/?url=${url}`);
+    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
     const content = await response.json();
     const result =
       url !== endpoints.nationalBank.url
