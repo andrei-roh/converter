@@ -6,12 +6,8 @@ import {
   fetchLanguageMenuClose,
   fetchChangeLanguage,
 } from 'components/redux/actions';
-import {
-  LanguageIconButton,
-  LanguageMenu,
-  LanguageMenuItem,
-  LanguageLocale,
-} from './style';
+import { LanguageMenu, LanguageMenuItem, LanguageLocale } from './style';
+import { Button } from 'components/themes';
 import i18n from 'i18n';
 import { useTranslation } from 'react-i18next';
 import { ILanguageSelector, State } from 'types';
@@ -35,7 +31,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
   };
   return (
     <>
-      <LanguageIconButton
+      <Button
         id="language-button"
         title={t('changeLanguage')}
         aria-labelledby={t('changeLanguage')}
@@ -46,7 +42,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
       >
         <Language />
         <LanguageLocale>{language}</LanguageLocale>
-      </LanguageIconButton>
+      </Button>
       <LanguageMenu
         id="language-menu"
         variant="selectedMenu"

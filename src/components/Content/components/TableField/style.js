@@ -9,9 +9,9 @@ export const TextFieldBlock = styled.div`
 `;
 
 export const SmallTextField = styled(TextField)(({ theme }) => ({
-  minWidth: '224px !important',
-  maxHeight: '56px !important',
-  borderBottom: 'solid #fff 1px !important',
+  minWidth: '224px',
+  maxWidth: '250px',
+  maxHeight: '56px',
   boxSizing: 'border-box',
   caretColor: 'transparent',
   '& label': {
@@ -35,5 +35,8 @@ export const SmallTextField = styled(TextField)(({ theme }) => ({
     '&:hover fieldset': {
       borderColor: theme.text,
     },
+  },
+  '& .MuiOutlinedInput-adornedEnd': {
+    paddingRight: '4px',
   },
 }));
