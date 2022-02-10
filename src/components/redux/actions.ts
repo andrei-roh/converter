@@ -32,7 +32,6 @@ export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   try {
     const response = await fetch(url);
     const content = await response.json();
-    console.log(content);
     const result =
       url !== endpoints.nationalBank.url
         ? createBelarusbankObject(content)
