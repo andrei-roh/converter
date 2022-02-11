@@ -1,19 +1,11 @@
 import styled from 'styled-components';
-import { IconButton, Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem } from '@material-ui/core';
+import { Button } from 'components/themes';
 
-export const BankIconButton = styled(IconButton)`
+export const BankIconButton = styled(Button)`
   margin-bottom: 10px;
-  color: ${({ theme }) => theme.text} !important;
   cursor: pointer;
   order: 2;
-
-  &:focus {
-    color: #3f51b5 !important;
-  }
-
-  &:focus-visible {
-    color: #3f51b5 !important;
-  }
 
   @media (min-width: 769px) {
     margin-bottom: 0;

@@ -6,7 +6,6 @@ export const lightTheme = {
   text: '#363537',
   border: 'null',
   change: 'rgba(0, 0, 0, 0.09)',
-  more: 'rgba(0, 0, 0, 0.12)',
 };
 
 export const darkTheme = {
@@ -14,7 +13,6 @@ export const darkTheme = {
   text: '#FFF',
   border: '#FFF',
   change: '#363537',
-  more: '#363537',
 };
 
 export const Button = styled(IconButton)`
