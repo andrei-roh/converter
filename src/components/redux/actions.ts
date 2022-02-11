@@ -30,12 +30,14 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
 export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   dispatch(fetchStart());
   try {
-    const response = await fetch(url);
-    const content = await response.json();
+    const response = await fetch(
+      `https://evening-taiga-06138.herokuapp.com/${url}`
+    );
     const result =
-      url !== endpoints.nationalBank.url
-        ? createBelarusbankObject(content)
-        : content;
+      url === endpoints.nationalBank.url
+        ? await response.json()
+        : createBelarusbankObject(await response.json());
+
     return dispatch(fetchBelarusRubleRateEnd(result));
   } catch (error) {
     dispatch(fetchError(String(error)));

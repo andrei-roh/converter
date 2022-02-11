@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const EmptyBlock = styled.div`
-  height: 144px;
+  height: 134px;
   width: 100%;
 
   @media (min-width: 769px) {
@@ -10,7 +10,7 @@ export const EmptyBlock = styled.div`
 `;
 
 export const HeaderBlock = styled.div`
-  padding: 12px 0;
+  padding: 4px 0 10px 0;
   width: 100%;
   background-color: rgba(63, 81, 181, 0.22);
   display: flex;

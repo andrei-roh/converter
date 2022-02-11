@@ -15,7 +15,6 @@ export const Starter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 15px;
   min-width: 250px;
   max-width: 1440px;
   margin-top: 10px;
@@ -42,18 +41,19 @@ export const Starter = styled.div`
   }
 `;
 
-export const More = styled(Button)`
-  color: ${({ theme }) => theme.text} !important;
-  background: ${({ theme }) => theme.more} !important;
-  border: solid 1px ${({ theme }) => theme.border} !important;
+export const More = styled(Button)(({ theme }) => ({
+  marginTop: '16px !important',
+  color: `${theme.text} !important`,
+  background: 'rgba(63, 81, 181, 0.22) !important',
+  border: `solid 1px ${theme.border} !important`,
 
-  &:focus {
-    border: solid #3f51b5 2px !important;
-    color: #3f51b5 !important;
-  }
+  '&:focus': {
+    border: 'solid #3f51b5 2px !important',
+    color: '#3f51b5 !important',
+  },
 
-  &:focus-visible {
-    border: solid #3f51b5 2px !important;
-    color: #3f51b5 !important;
-  }
-`;
+  '&:focus-visible': {
+    border: 'solid #3f51b5 2px !important',
+    color: '#3f51b5 !important',
+  },
+}));
