@@ -23,4 +23,9 @@ export const Phrase = styled(Typography)`
   padding-top: 20px;
   color: #808080;
   text-align: center;
+  opacity: 1;
+`;
+
+export const Invisible = styled(Phrase)`
+  opacity: 0;
 `;

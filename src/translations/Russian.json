@@ -39,5 +39,8 @@
     "belarusBank": "Беларусбанк",
     "changeBank": "Сменить банк",
     "dabrabytBank": "Банк Дабрабыт",
-    "belagropromBank": "Belagroprombank"
+    "belagropromBank": "Belagroprombank",
+    "error": "Ошибка",
+    "showError": "Показать Ошибку"
+
 }

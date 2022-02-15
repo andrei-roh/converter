@@ -39,5 +39,7 @@
     "belarusBank": "Belarusbank",
     "changeBank": "Change Bank",
     "dabrabytBank": "Bank Dabrabyt",
-    "belagropromBank": "Белагропромбанк"
+    "belagropromBank": "Belagroprombank",
+    "error": "Error",
+    "showError": "Show Error"
 }

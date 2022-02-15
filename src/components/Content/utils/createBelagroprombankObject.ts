@@ -1,7 +1,7 @@
 import { emptyObject } from './emptyObject';
 
 export const createBelagroprombankObject = (object: any) => {
-  const obj: any = JSON.parse(object)
+  const intermediate: any = JSON.parse(object)
     .elements[0].elements.map((element: any) => ({
       CharCode: element.elements[1].elements[0].text,
       RateBuy: element.elements[4].elements[0].text,
@@ -13,7 +13,7 @@ export const createBelagroprombankObject = (object: any) => {
         ...element,
         Cur_Scale: 1,
         Cur_OfficialRate:
-          obj.filter(
+          intermediate.filter(
             (value: any) => value.CharCode === element.Cur_Abbreviation
           )[0]?.RateBuy || 0,
       };

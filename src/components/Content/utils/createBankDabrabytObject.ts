@@ -1,7 +1,7 @@
 import { emptyObject } from './emptyObject';
 
 export const createBankDabrabytObject = (object: any) => {
-  const obj: any =
+  const intermediate: any =
     JSON.parse(object).elements[0].elements[1].elements[0].elements[3].elements;
   return emptyObject
     .map((element) => {
@@ -9,7 +9,7 @@ export const createBankDabrabytObject = (object: any) => {
         ...element,
         Cur_Scale: 1,
         Cur_OfficialRate:
-          obj.filter(
+          intermediate.filter(
             (value: any) => value.attributes.iso === element.Cur_Abbreviation
           )[0]?.attributes.buy || 0,
       };
