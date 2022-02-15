@@ -7,4 +7,12 @@ export const endpoints = {
     name: 'belarusBank',
     url: 'https://belarusbank.by/api/kursExchange?city=Минск',
   },
+  dabrabytBank: {
+    name: 'dabrabytBank',
+    url: 'https://bankdabrabyt.by/export_courses.php',
+  },
+  belagropromBank: {
+    name: 'belagropromBank',
+    url: 'https://belapb.by/CashExRatesDaily.php',
+  },
 };

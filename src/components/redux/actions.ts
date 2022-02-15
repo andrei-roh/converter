@@ -12,8 +12,11 @@ import {
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
-import { createBelarusbankObject } from '../Content/utils/createBelarusbankObject';
+import { createBelarusbankObject } from 'components/Content/utils/createBelarusbankObject';
+import { createBankDabrabytObject } from 'components/Content/utils/createBankDabrabytObject';
+import { createBelagroprombankObject } from 'components/Content/utils/createBelagroprombankObject';
 import { endpoints } from 'endpoints';
+import convert from 'xml-js';
 
 const fetchStart = () => ({ type: FETCH_START });
 
@@ -29,16 +32,44 @@ export const fetchBelarusRubleRateEnd = (currency: any) => ({
 
 export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
   dispatch(fetchStart());
+  const { nationalBank, belarusBank, dabrabytBank, belagropromBank } =
+    endpoints;
   try {
     const response = await fetch(
       `https://evening-taiga-06138.herokuapp.com/${url}`
     );
-    const result =
-      url === endpoints.nationalBank.url
-        ? await response.json()
-        : createBelarusbankObject(await response.json());
-
-    return dispatch(fetchBelarusRubleRateEnd(result));
+    let result: any;
+    const options = {
+      compact: false,
+      spaces: 0,
+      ignoreDeclaration: true,
+    };
+    switch (url) {
+      case nationalBank.url:
+        result = await response.json();
+        dispatch(fetchBelarusRubleRateEnd(result));
+        break;
+      case belarusBank.url:
+        result = createBelarusbankObject(await response.json());
+        dispatch(fetchBelarusRubleRateEnd(result));
+        break;
+      case dabrabytBank.url:
+        result = createBankDabrabytObject(
+          await response.text().then((xml) => {
+            return convert.xml2json(xml, options);
+          })
+        );
+        dispatch(fetchBelarusRubleRateEnd(result));
+        break;
+      case belagropromBank.url:
+        result = createBelagroprombankObject(
+          await response.text().then((xml) => {
+            return convert.xml2json(xml, options);
+          })
+        );
+        dispatch(fetchBelarusRubleRateEnd(result));
+        break;
+    }
   } catch (error) {
     dispatch(fetchError(String(error)));
   }

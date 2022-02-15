@@ -37,5 +37,7 @@
     "currencyForExchange": "Валюта для обмена",
     "nationalBank": "Национальный Банк",
     "belarusBank": "Беларусбанк",
-    "changeBank": "Сменить банк"
+    "changeBank": "Сменить банк",
+    "dabrabytBank": "Банк Дабрабыт",
+    "belagropromBank": "Belagroprombank"
 }
