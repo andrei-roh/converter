@@ -37,5 +37,9 @@
     "currencyForExchange": "Currency for exchange",
     "nationalBank": "National Bank",
     "belarusBank": "Belarusbank",
-    "changeBank": "Change Bank"
+    "changeBank": "Change Bank",
+    "dabrabytBank": "Bank Dabrabyt",
+    "belagropromBank": "Belagroprombank",
+    "error": "Error",
+    "showError": "Show Error"
 }
