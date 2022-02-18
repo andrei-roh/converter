@@ -1,9 +1,9 @@
-import { emptyObject } from './emptyObject';
+import { defaultCurrencies } from '../constants/defaultCurrencies';
 
 export const createBankDabrabytObject = (object: any) => {
   const intermediate: any =
     JSON.parse(object).elements[0].elements[1].elements[0].elements[3].elements;
-  return emptyObject
+  return defaultCurrencies
     .map((element) => {
       return {
         ...element,

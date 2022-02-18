@@ -1,7 +1,7 @@
 import {
   FETCH_START,
   FETCH_ERROR,
-  BELARUS_RUBLE_RATE_TO_OTHER,
+  CURRENCY_RATES,
   LANGUAGE_MENU_OPEN,
   LANGUAGE_MENU_CLOSE,
   SET_SHOW_DARK,
@@ -14,21 +14,16 @@ import {
 } from './types';
 import { Action } from 'types';
 import { endpoints } from 'endpoints';
+import { defaultRouble } from './constants/defaultRouble';
 
 const { nationalBank } = endpoints;
 
 const initialState = {
   loading: false,
   error: null,
-  belarusRubleToOther: 0,
+  currencyRates: 0,
   defaultValue: [431, 451, 456, 1],
-  belarusRuble: {
-    Cur_Abbreviation: 'BEL',
-    Cur_ID: 1,
-    Cur_Name: 'Белорусский рубль',
-    Cur_OfficialRate: 1,
-    Cur_Scale: 1,
-  },
+  rouble: defaultRouble,
   anchorLanguageMenu: null,
   showDark: false,
   theme: 'light',
@@ -52,10 +47,11 @@ const rootReducer = (state = initialState, action: Action) => {
         error: action.payload,
         loading: false,
       };
-    case BELARUS_RUBLE_RATE_TO_OTHER:
+    case CURRENCY_RATES:
       return {
         ...state,
-        belarusRubleToOther: action.payload,
+        currencyRates: action.payload,
+        rouble: defaultRouble,
         loading: false,
       };
     case LANGUAGE_MENU_OPEN:

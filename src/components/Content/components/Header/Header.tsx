@@ -14,6 +14,7 @@ import { IHeader } from 'types';
 const Header: React.FC<IHeader> = ({
   mainLabelValue,
   mainFieldValue,
+  currentMainId,
   handleMainFieldChange,
 }) => {
   return (
@@ -30,6 +31,7 @@ const Header: React.FC<IHeader> = ({
         <EntryField
           mainLabelValue={mainLabelValue}
           mainFieldValue={mainFieldValue}
+          currentMainId={currentMainId}
           handleMainFieldChange={handleMainFieldChange}
         />
         <DesktopSelector>

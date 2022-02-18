@@ -1,9 +1,9 @@
 const initialState = {
   loading: false,
   error: null,
-  belarusRubleToOther: 0,
+  currencyRates: 0,
   defaultValue: [431, 451, 456, 1],
-  belarusRuble: {
+  rouble: {
     Cur_Abbreviation: 'BEL',
     Cur_ID: 1,
     Cur_Name: 'Белорусский рубль',

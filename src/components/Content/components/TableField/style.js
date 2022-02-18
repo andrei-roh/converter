@@ -6,11 +6,12 @@ export const TextFieldBlock = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 `;
 
 export const SmallTextField = styled(TextField)(({ theme }) => ({
   minWidth: '224px',
-  maxWidth: '250px',
+  maxWidth: '260px',
   maxHeight: '56px',
   boxSizing: 'border-box',
   caretColor: 'transparent',
@@ -19,6 +20,7 @@ export const SmallTextField = styled(TextField)(({ theme }) => ({
   },
   '& .MuiInputBase-input': {
     color: theme.text,
+    fontSize: '22px',
     '&:hover': {
       cursor: 'pointer',
     },

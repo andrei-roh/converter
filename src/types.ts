@@ -12,8 +12,8 @@ export interface IError {
 
 export interface IContent {
   defaultValue: Array<number>;
-  belarusRuble: Currency;
-  belarusRubleToOther: number;
+  rouble: Currency;
+  currencyRates: number;
 }
 
 export interface State extends IError, IContent {
@@ -40,6 +40,7 @@ export interface IChange {
 }
 
 export interface ITableField {
+  key: number;
   element: any;
   rate: number;
   exchangeMainField: (label: string, value: number, id: number) => void;
@@ -49,11 +50,12 @@ export interface ITableField {
 export interface IHeader {
   mainLabelValue: string;
   mainFieldValue: number;
+  currentMainId: number;
   handleMainFieldChange: any;
 }
 
 export interface IMain extends State {
-  onfetchBelarusRubleRate: (url: string) => void;
+  onfetchCurrencyRate: (url: string) => void;
 }
 
 export interface ILanguageSelector {

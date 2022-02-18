@@ -10,8 +10,8 @@ import { IContent } from 'types';
 
 const Content: React.FC<IContent> = ({
   defaultValue,
-  belarusRuble,
-  belarusRubleToOther,
+  rouble,
+  currencyRates,
 }) => {
   const { t } = useTranslation();
   const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
@@ -20,13 +20,14 @@ const Content: React.FC<IContent> = ({
     setShowAllCourses(!showAllCourses);
   };
   const [mainFieldValue, setMainFieldValue] = useState<number>(
-    belarusRuble.Cur_OfficialRate
+    rouble.Cur_OfficialRate
   );
   const handleMainFieldChange = (element: any) => {
+    if (element.target.value.length > 9) return;
     setMainFieldValue(element.target.value);
   };
-  const [currentMainId, setCurrentMainId] = useState(1);
-  const [mainLabelValue, setMainLabelValue] = useState(belarusRuble.Cur_Name);
+  const [currentMainId, setCurrentMainId] = useState(rouble.Cur_ID);
+  const [mainLabelValue, setMainLabelValue] = useState(rouble.Cur_Name);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const handleShowScrollButton = () => {
     if (window.pageYOffset !== 0) return setShowScrollButton(true);
@@ -45,57 +46,46 @@ const Content: React.FC<IContent> = ({
   const exchangeMainField = (label: string, value: number, id: number) => {
     setMainLabelValue(label);
     setMainFieldValue(value);
-    id !== belarusRuble.Cur_ID
+    id !== rouble.Cur_ID
       ? setShowBelarusRubleRate(true)
       : setShowBelarusRubleRate(false);
     createOtherRate(id, setCurrentMainId, otherCurrencyRateToOther);
   };
 
-  const otherCurrencyRateToOther =
-    Object.values(belarusRubleToOther).concat(belarusRuble);
+  const otherCurrencyRateToOther = Object.values(currencyRates).concat(rouble);
 
-  const defaultContent = Object.values(
-    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
-  )
-    .filter((element: any) => defaultValue.includes(element.Cur_ID))
-    .map((element: any) => {
-      const rate =
-        (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
-      return element.Cur_ID !== currentMainId ? (
-        <TableField
-          key={element.Cur_ID}
-          element={element}
-          rate={rate}
-          exchangeMainField={exchangeMainField}
-          showScrollButton={showScrollButton}
-        />
-      ) : null;
-    });
+  const Content = (full: boolean) => {
+    return Object.values(
+      getRate(showBelarusRubleRate, currencyRates, otherCurrencyRateToOther)
+    )
+      .filter((element: any) => {
+        return full ? element : defaultValue.includes(element.Cur_ID);
+      })
+      .map((element: any) => {
+        const rate =
+          (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
+        return element.Cur_ID !== currentMainId ? (
+          <TableField
+            key={element.Cur_ID}
+            element={element}
+            rate={rate}
+            exchangeMainField={exchangeMainField}
+            showScrollButton={showScrollButton}
+          />
+        ) : null;
+      });
+  };
 
-  const allContent = Object.values(
-    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
-  ).map((element: any) => {
-    const rate =
-      (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
-    return element.Cur_ID !== currentMainId ? (
-      <TableField
-        key={element.Cur_ID}
-        element={element}
-        rate={rate}
-        exchangeMainField={exchangeMainField}
-        showScrollButton={showScrollButton}
-      />
-    ) : null;
-  });
   return (
     <Full>
       <Header
         mainLabelValue={mainLabelValue}
         mainFieldValue={mainFieldValue}
+        currentMainId={currentMainId}
         handleMainFieldChange={handleMainFieldChange}
       />
-      <Starter>{!showAllCourses ? defaultContent : allContent}</Starter>
-      {!showAllCourses && allContent.length > 3 ? (
+      <Starter>{!showAllCourses ? Content(false) : Content(true)}</Starter>
+      {!showAllCourses && Content(true).length > 3 ? (
         <More
           variant="contained"
           onClick={handleShowAllCourses}

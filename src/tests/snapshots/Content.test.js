@@ -4,14 +4,14 @@ import initialState from '../initialState';
 
 let wrapper;
 
-const { belarusRubleToOther, defaultValue, belarusRuble } = initialState;
+const { currencyRates, defaultValue, rouble } = initialState;
 
 beforeEach(() => {
   wrapper = shallow(
     <Content
-      belarusRubleToOther={belarusRubleToOther}
+      currencyRates={currencyRates}
       defaultValue={defaultValue}
-      belarusRuble={belarusRuble}
+      rouble={rouble}
     />
   );
 });

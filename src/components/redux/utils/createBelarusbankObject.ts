@@ -1,7 +1,7 @@
-import { emptyObject } from './emptyObject';
+import { defaultCurrencies } from '../constants/defaultCurrencies';
 
 export const createBelarusbankObject = (object: any) => {
-  return emptyObject
+  return defaultCurrencies
     .map((element) => {
       return {
         ...element,
