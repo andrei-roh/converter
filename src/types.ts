@@ -12,8 +12,8 @@ export interface IError {
 
 export interface IContent {
   defaultValue: Array<number>;
-  belarusRuble: Currency;
-  belarusRubleToOther: number;
+  rouble: Currency;
+  currencyRates: number;
 }
 
 export interface State extends IError, IContent {
@@ -36,30 +36,44 @@ export interface IChange {
   label: string;
   value: number;
   id: number;
-  exchangeMainField: (label: string, value: number, id: number) => void;
+  exchangeMainField: (
+    label: string,
+    value: number,
+    id: number,
+    currentMainId: number
+  ) => void;
+  currentMainId: number;
 }
 
 export interface ITableField {
-  element: any;
+  key: number;
+  element: Currency;
   rate: number;
-  exchangeMainField: (label: string, value: number, id: number) => void;
+  exchangeMainField: (
+    label: string,
+    value: number,
+    id: number,
+    currentMainId: number
+  ) => void;
   showScrollButton: boolean;
+  currentMainId: number;
 }
 
 export interface IHeader {
   mainLabelValue: string;
   mainFieldValue: number;
+  currentMainId: number;
   handleMainFieldChange: any;
 }
 
 export interface IMain extends State {
-  onfetchBelarusRubleRate: (url: string) => void;
+  onfetchCurrencyRate: (url: string) => void;
 }
 
 export interface ILanguageSelector {
   anchorLanguageMenu: null | HTMLElement;
   onfetchLanguageMenuOpen: (currentTarget: any) => void;
-  onfetchLanguageMenuClose: any;
+  onfetchLanguageMenuClose: (currentTarget: any) => void;
   language: string;
   onfetchChangeLanguage: (language: string) => void;
 }
@@ -67,7 +81,7 @@ export interface ILanguageSelector {
 export interface IBankSelector {
   anchorBankMenu: null | HTMLElement;
   onfetchBankMenuOpen: (currentTarget: any) => void;
-  onfetchBankMenuClose: any;
+  onfetchBankMenuClose: (currentTarget: any) => void;
   bank: string;
   onfetchChangeBank: (bank: string) => void;
   onfetchChangeEndpoint: (endpoint: string) => void;
@@ -77,4 +91,14 @@ export interface IDark {
   theme: string;
   showDark: boolean;
   onfetchSwitchTheme: (showDark: boolean, theme: string) => void;
+}
+
+export interface SyntheticEvent {
+  target: any;
+  currentTarget: EventTarget;
+}
+
+export interface Endpoint {
+  name: string;
+  url: string;
 }

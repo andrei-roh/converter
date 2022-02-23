@@ -10,7 +10,7 @@ import { LanguageMenu, LanguageMenuItem, LanguageLocale } from './style';
 import { Button } from 'components/themes';
 import i18n from 'i18n';
 import { useTranslation } from 'react-i18next';
-import { ILanguageSelector, State } from 'types';
+import { ILanguageSelector, State, SyntheticEvent } from 'types';
 
 const LanguageSelector: React.FC<ILanguageSelector> = ({
   anchorLanguageMenu,
@@ -20,8 +20,9 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
   onfetchChangeLanguage,
 }) => {
   const { t } = useTranslation();
+  const { data } = i18n.store;
   const openLanguageMenu = Boolean(anchorLanguageMenu);
-  const handleOpenLanguageMenu = (element: any) => {
+  const handleOpenLanguageMenu = (element: SyntheticEvent) => {
     onfetchLanguageMenuOpen(element.currentTarget);
   };
   const chooseLanguage = (element: any) => {
@@ -37,7 +38,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
         aria-labelledby={t('changeLanguage')}
         aria-controls="language-menu"
         aria-haspopup="true"
-        aria-expanded={openLanguageMenu ? 'true' : undefined}
+        aria-expanded={openLanguageMenu}
         onClick={handleOpenLanguageMenu}
       >
         <Language />
@@ -54,7 +55,7 @@ const LanguageSelector: React.FC<ILanguageSelector> = ({
           'aria-labelledby': 'language-button',
         }}
       >
-        {Object.keys(i18n.store.data).map((element, index) => (
+        {Object.keys(data).map((element, index) => (
           <LanguageMenuItem
             key={element}
             id={element}
@@ -75,7 +76,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onfetchLanguageMenuOpen: (currentTarget: any) =>
+  onfetchLanguageMenuOpen: (currentTarget: SyntheticEvent) =>
     dispatch(fetchLanguageMenuOpen(currentTarget)),
   onfetchLanguageMenuClose: (anchorLanguageMenu: null | HTMLElement) =>
     dispatch(fetchLanguageMenuClose(anchorLanguageMenu)),

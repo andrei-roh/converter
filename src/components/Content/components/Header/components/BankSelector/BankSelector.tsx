@@ -9,7 +9,7 @@ import {
 } from 'components/redux/actions';
 import { BankIconButton, BankMenu, BankMenuItem, BankLocale } from './style';
 import { useTranslation } from 'react-i18next';
-import { IBankSelector, State } from 'types';
+import { IBankSelector, State, SyntheticEvent, Endpoint } from 'types';
 import { endpoints } from 'endpoints';
 
 const BankSelector: React.FC<IBankSelector> = ({
@@ -22,16 +22,16 @@ const BankSelector: React.FC<IBankSelector> = ({
 }) => {
   const { t } = useTranslation();
   const openBankMenu = Boolean(anchorBankMenu);
-  const handleOpenBankMenu = (element: any) => {
+  const handleOpenBankMenu = (element: SyntheticEvent) => {
     onfetchBankMenuOpen(element.currentTarget);
   };
   const getEndpointLink = (elementId: string) => {
     const result = Object.values(endpoints).filter(
-      (element: any) => element.name === elementId
+      (element: Endpoint) => element.name === elementId
     );
     return result[0].url;
   };
-  const chooseBank = (element: any) => {
+  const chooseBank = (element: SyntheticEvent) => {
     let endpoint = getEndpointLink(element.target.id);
     onfetchBankMenuClose(anchorBankMenu);
     onfetchChangeBank(element.target.id);
@@ -45,7 +45,7 @@ const BankSelector: React.FC<IBankSelector> = ({
         aria-labelledby={t('changeBank')}
         aria-controls="bank-menu"
         aria-haspopup="true"
-        aria-expanded={openBankMenu ? 'true' : undefined}
+        aria-expanded={openBankMenu}
         onClick={handleOpenBankMenu}
       >
         <AccountBalance />
@@ -83,7 +83,7 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onfetchBankMenuOpen: (currentTarget: any) =>
+  onfetchBankMenuOpen: (currentTarget: SyntheticEvent) =>
     dispatch(fetchBankMenuOpen(currentTarget)),
   onfetchBankMenuClose: (anchorBankMenu: null | HTMLElement) =>
     dispatch(fetchBankMenuClose(anchorBankMenu)),

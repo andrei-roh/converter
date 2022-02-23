@@ -1,7 +1,7 @@
 import {
   FETCH_START,
   FETCH_ERROR,
-  BELARUS_RUBLE_RATE_TO_OTHER,
+  CURRENCY_RATES,
   LANGUAGE_MENU_OPEN,
   LANGUAGE_MENU_CLOSE,
   SET_SHOW_DARK,
@@ -12,9 +12,10 @@ import {
   BANK_MENU_OPEN,
   BANK_MENU_CLOSE,
 } from './types';
-import { createBelarusbankObject } from 'components/Content/utils/createBelarusbankObject';
-import { createBankDabrabytObject } from 'components/Content/utils/createBankDabrabytObject';
-import { createBelagroprombankObject } from 'components/Content/utils/createBelagroprombankObject';
+import { createNationalBankObject } from 'components/redux/utils/createNationalBankObject';
+import { createBelarusbankObject } from 'components/redux/utils/createBelarusbankObject';
+import { createBankDabrabytObject } from 'components/redux/utils/createBankDabrabytObject';
+import { createBelagroprombankObject } from 'components/redux/utils/createBelagroprombankObject';
 import { endpoints } from 'endpoints';
 import convert from 'xml-js';
 
@@ -26,7 +27,7 @@ const fetchError = (error: string) => ({
 });
 
 export const fetchBelarusRubleRateEnd = (currency: any) => ({
-  type: BELARUS_RUBLE_RATE_TO_OTHER,
+  type: CURRENCY_RATES,
   payload: currency,
 });
 
@@ -46,7 +47,7 @@ export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
     };
     switch (url) {
       case nationalBank.url:
-        result = await response.json();
+        result = createNationalBankObject(await response.json());
         dispatch(fetchBelarusRubleRateEnd(result));
         break;
       case belarusBank.url:

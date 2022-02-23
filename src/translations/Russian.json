@@ -19,7 +19,6 @@
     "moldavianGros": "Молдавский лей",
     "dollarNewZealand": "Новозеландский доллар",
     "norwegianKrone": "Норвежская крона",
-    "sdr": "СДР",
     "dollarSingapore": "Сингапурский доллар",
     "kyrgyzstaniSom": "Киргизский сом",
     "kazakhstaniTenge": "Казахский тенге",
@@ -39,8 +38,9 @@
     "belarusBank": "Беларусбанк",
     "changeBank": "Сменить банк",
     "dabrabytBank": "Банк Дабрабыт",
-    "belagropromBank": "Belagroprombank",
+    "belagropromBank": "Белагропромбанк",
     "error": "Ошибка",
-    "showError": "Показать Ошибку"
+    "showError": "Показать Ошибку",
+    "flag": "Флаг"
 
 }

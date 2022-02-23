@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const EmptyBlock = styled.div`
-  height: 134px;
+  height: 150px;
   width: 100%;
 
   @media (min-width: 769px) {
-    height: 96px;
+    height: 120px;
   }
 `;
 

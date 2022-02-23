@@ -4,13 +4,13 @@ import initialState from '../initialState';
 
 let wrapper;
 
-const { belarusRuble } = initialState;
+const { rouble } = initialState;
 
 beforeEach(() => {
   wrapper = shallow(
     <Header
-      mainLabelValue={belarusRuble.Cur_OfficialRate}
-      mainFieldValue={belarusRuble.Cur_Name}
+      mainLabelValue={rouble.Cur_OfficialRate}
+      mainFieldValue={rouble.Cur_Name}
       handleMainFieldChange={null}
     />
   );

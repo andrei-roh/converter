@@ -6,11 +6,12 @@ export const TextFieldBlock = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 `;
 
 export const SmallTextField = styled(TextField)(({ theme }) => ({
   minWidth: '224px',
-  maxWidth: '250px',
+  maxWidth: '300px',
   maxHeight: '56px',
   boxSizing: 'border-box',
   caretColor: 'transparent',
@@ -19,6 +20,9 @@ export const SmallTextField = styled(TextField)(({ theme }) => ({
   },
   '& .MuiInputBase-input': {
     color: theme.text,
+    fontSize: '36px',
+    padding: '14px',
+
     '&:hover': {
       cursor: 'pointer',
     },
@@ -31,6 +35,7 @@ export const SmallTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderColor: theme.text,
+      borderWidth: '2px',
     },
     '&:hover fieldset': {
       borderColor: theme.text,

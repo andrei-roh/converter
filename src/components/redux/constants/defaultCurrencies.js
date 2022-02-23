@@ -1,4 +1,4 @@
-export const emptyObject = [
+export const defaultCurrencies = [
   {
     Cur_ID: 440,
     Cur_Abbreviation: 'AUD',
@@ -123,13 +123,6 @@ export const emptyObject = [
     Cur_Abbreviation: 'RUB',
     Cur_Scale: 100,
     Cur_Name: 'Российских рублей',
-    Cur_OfficialRate: 0,
-  },
-  {
-    Cur_ID: 457,
-    Cur_Abbreviation: 'XDR',
-    Cur_Scale: 1,
-    Cur_Name: 'СДР (Специальные права заимствования)',
     Cur_OfficialRate: 0,
   },
   {

@@ -21,14 +21,13 @@ export const Starter = styled.div`
 
   @media (min-width: 501px) {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 15px;
     grid-template-columns: 1fr 1fr;
     margin-top: 15px;
   }
 
   @media (min-width: 769px) {
     display: grid;
-    grid-gap: 25px;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 20px;
   }
@@ -36,12 +35,13 @@ export const Starter = styled.div`
   @media (min-width: 1201px) {
     display: grid;
     width: 80%;
-    grid-gap: 30px;
+    grid-gap: 15px;
     margin-top: 20px;
   }
 `;
 
 export const More = styled(Button)(({ theme }) => ({
+  fontSize: '20px !important',
   marginTop: '16px !important',
   color: `${theme.text} !important`,
   background: 'rgba(63, 81, 181, 0.22) !important',

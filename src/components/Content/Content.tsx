@@ -2,31 +2,33 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import TableField from './components/TableField/TableField';
 import Footer from './components/Footer/Footer';
-import createOtherRate from './utils/createOtherRate';
-import getRate from './utils/getRate';
+import getExchangeRates from './utils/getExchangeRates';
+import getFormatNumber from './utils/getFormatNumber';
 import { Full, Starter, More } from './style';
 import { useTranslation } from 'react-i18next';
-import { IContent } from 'types';
+import { IContent, Currency, SyntheticEvent } from 'types';
 
 const Content: React.FC<IContent> = ({
   defaultValue,
-  belarusRuble,
-  belarusRubleToOther,
+  rouble,
+  currencyRates,
 }) => {
+  const minElementsForShowingMore = 3;
   const { t } = useTranslation();
-  const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const handleShowAllCourses = () => {
     setShowAllCourses(!showAllCourses);
   };
   const [mainFieldValue, setMainFieldValue] = useState<number>(
-    belarusRuble.Cur_OfficialRate
+    rouble.Cur_OfficialRate
   );
-  const handleMainFieldChange = (element: any) => {
+  const handleMainFieldChange = (element: SyntheticEvent) => {
+    const maxPlaces = 6;
+    if (element.target.value.length > maxPlaces) return;
     setMainFieldValue(element.target.value);
   };
-  const [currentMainId, setCurrentMainId] = useState(1);
-  const [mainLabelValue, setMainLabelValue] = useState(belarusRuble.Cur_Name);
+  const [currentMainId, setCurrentMainId] = useState(rouble.Cur_ID);
+  const [mainLabelValue, setMainLabelValue] = useState(rouble.Cur_Name);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const handleShowScrollButton = () => {
     if (window.pageYOffset !== 0) return setShowScrollButton(true);
@@ -42,60 +44,49 @@ const Content: React.FC<IContent> = ({
     return cleanScrollListener;
   });
 
-  const exchangeMainField = (label: string, value: number, id: number) => {
+  const exchangeMainField = (
+    label: string,
+    value: number,
+    id: number,
+    currentMainId: number
+  ) => {
     setMainLabelValue(label);
     setMainFieldValue(value);
-    id !== belarusRuble.Cur_ID
-      ? setShowBelarusRubleRate(true)
-      : setShowBelarusRubleRate(false);
-    createOtherRate(id, setCurrentMainId, otherCurrencyRateToOther);
+    getExchangeRates(id, setCurrentMainId, currencyRates, currentMainId);
   };
 
-  const otherCurrencyRateToOther =
-    Object.values(belarusRubleToOther).concat(belarusRuble);
+  const Content = (full: boolean) => {
+    return Object.values(currencyRates)
+      .filter((element: Currency) => {
+        return full ? element : defaultValue.includes(element.Cur_ID);
+      })
+      .map((element: Currency) => {
+        const rate = getFormatNumber(
+          (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue
+        );
+        return element.Cur_ID !== currentMainId ? (
+          <TableField
+            key={element.Cur_ID}
+            element={element}
+            rate={rate}
+            exchangeMainField={exchangeMainField}
+            showScrollButton={showScrollButton}
+            currentMainId={currentMainId}
+          />
+        ) : null;
+      });
+  };
 
-  const defaultContent = Object.values(
-    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
-  )
-    .filter((element: any) => defaultValue.includes(element.Cur_ID))
-    .map((element: any) => {
-      const rate =
-        (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
-      return element.Cur_ID !== currentMainId ? (
-        <TableField
-          key={element.Cur_ID}
-          element={element}
-          rate={rate}
-          exchangeMainField={exchangeMainField}
-          showScrollButton={showScrollButton}
-        />
-      ) : null;
-    });
-
-  const allContent = Object.values(
-    getRate(showBelarusRubleRate, belarusRubleToOther, otherCurrencyRateToOther)
-  ).map((element: any) => {
-    const rate =
-      (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
-    return element.Cur_ID !== currentMainId ? (
-      <TableField
-        key={element.Cur_ID}
-        element={element}
-        rate={rate}
-        exchangeMainField={exchangeMainField}
-        showScrollButton={showScrollButton}
-      />
-    ) : null;
-  });
   return (
     <Full>
       <Header
         mainLabelValue={mainLabelValue}
         mainFieldValue={mainFieldValue}
+        currentMainId={currentMainId}
         handleMainFieldChange={handleMainFieldChange}
       />
-      <Starter>{!showAllCourses ? defaultContent : allContent}</Starter>
-      {!showAllCourses && allContent.length > 3 ? (
+      <Starter>{!showAllCourses ? Content(false) : Content(true)}</Starter>
+      {!showAllCourses && Content(true).length > minElementsForShowingMore ? (
         <More
           variant="contained"
           onClick={handleShowAllCourses}

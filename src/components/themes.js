@@ -26,3 +26,7 @@ export const Button = styled(IconButton)`
     color: #3f51b5 !important;
   }
 `;
+
+export const Flag = styled.img`
+  margin: 0 5px;
+`;

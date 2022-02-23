@@ -13,15 +13,15 @@ const Main: React.FC<IMain> = ({
   loading,
   error,
   defaultValue,
-  belarusRuble,
-  belarusRubleToOther,
-  onfetchBelarusRubleRate,
+  rouble,
+  currencyRates,
+  onfetchCurrencyRate,
   theme,
   endpoint,
 }) => {
   useEffect(() => {
-    onfetchBelarusRubleRate(endpoint);
-  }, [endpoint, onfetchBelarusRubleRate]);
+    onfetchCurrencyRate(endpoint);
+  }, [endpoint, onfetchCurrencyRate]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -33,8 +33,8 @@ const Main: React.FC<IMain> = ({
       ) : (
         <Content
           defaultValue={defaultValue}
-          belarusRuble={belarusRuble}
-          belarusRubleToOther={belarusRubleToOther}
+          rouble={rouble}
+          currencyRates={currencyRates}
         />
       )}
     </ThemeProvider>
@@ -45,16 +45,15 @@ const mapStateToProps = (state: State) => ({
   loading: state.loading,
   error: state.error,
   defaultValue: state.defaultValue,
-  belarusRuble: state.belarusRuble,
-  belarusRubleToOther: state.belarusRubleToOther,
+  rouble: state.rouble,
+  currencyRates: state.currencyRates,
   theme: state.theme,
   showDark: state.showDark,
   endpoint: state.endpoint,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onfetchBelarusRubleRate: (url: string) =>
-    dispatch(fetchBelarusRubleRate(url)),
+  onfetchCurrencyRate: (url: string) => dispatch(fetchBelarusRubleRate(url)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

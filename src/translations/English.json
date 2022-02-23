@@ -19,7 +19,6 @@
     "moldavianGros": "Moldavian gros",
     "dollarNewZealand": "New Zealand dollar",
     "norwegianKrone": "Norwegian krone",
-    "sdr": "Special Drawing Rights",
     "dollarSingapore": "Singapore dollar",
     "kyrgyzstaniSom": "Kyrgyzstani som",
     "kazakhstaniTenge": "Kazakhstani tenge",
@@ -41,5 +40,6 @@
     "dabrabytBank": "Bank Dabrabyt",
     "belagropromBank": "Belagroprombank",
     "error": "Error",
-    "showError": "Show Error"
+    "showError": "Show Error",
+    "flag": "Flag"
 }
