@@ -1,8 +1,8 @@
 import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
-import { IconButton } from '@material-ui/core';
 import { ScrollUpBlock } from './style';
 import smoothscroll from 'smoothscroll-polyfill';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'components/themes';
 
 const ScrollUp = () => {
   const { t } = useTranslation();
@@ -12,9 +12,9 @@ const ScrollUp = () => {
   };
   return (
     <ScrollUpBlock onClick={getScrollUp} title={t('scrollUp')}>
-      <IconButton color="secondary">
+      <Button>
         <KeyboardArrowUp fontSize="large" />
-      </IconButton>
+      </Button>
     </ScrollUpBlock>
   );
 };

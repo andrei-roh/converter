@@ -39,17 +39,17 @@ const TableField: React.FC<ITableField> = ({
         onClick={handleCurrencyLabelChange}
         InputProps={{
           inputMode: 'numeric',
+          startAdornment: (
+            <Flag src={getCountryFlag(element.Cur_ID)} alt={t('flag')} />
+          ),
           endAdornment: (
-            <>
-              <Flag src={getCountryFlag(element.Cur_ID)} alt={t('flag')} />
-              <Change
-                label={element.Cur_Name}
-                value={rate}
-                id={element.Cur_ID}
-                exchangeMainField={exchangeMainField}
-                currentMainId={currentMainId}
-              />
-            </>
+            <Change
+              label={element.Cur_Name}
+              value={rate}
+              id={element.Cur_ID}
+              exchangeMainField={exchangeMainField}
+              currentMainId={currentMainId}
+            />
           ),
         }}
       />

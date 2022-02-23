@@ -16,7 +16,7 @@ import { Action } from 'types';
 import { endpoints } from 'endpoints';
 import { defaultRouble } from './constants/defaultRouble';
 
-const { nationalBank } = endpoints;
+const { belarusBank } = endpoints;
 
 const initialState = {
   loading: false,
@@ -28,8 +28,8 @@ const initialState = {
   showDark: false,
   theme: 'light',
   language: 'be',
-  bank: nationalBank.name,
-  endpoint: nationalBank.url,
+  bank: belarusBank.name,
+  endpoint: belarusBank.url,
   anchorBankMenu: null,
 };
 

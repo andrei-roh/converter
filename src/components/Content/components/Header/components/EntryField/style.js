@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
+import { Field } from 'components/themes';
 
 export const MainBlock = styled.div`
   min-width: 300px;
@@ -11,23 +11,26 @@ export const MainBlock = styled.div`
   }
 `;
 
-export const MainTextField = styled(TextField)(({ theme }) => ({
+export const MainTextField = styled(Field)(({ theme }) => ({
   '& label': {
-    color: theme.text,
+    color: theme.header,
     fontSize: '16.4px',
   },
   '& .MuiInputBase-input': {
-    color: theme.text,
-    fontSize: '36px',
+    color: theme.header,
+    fontSize: '28px',
     padding: '14px',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: theme.text,
-      borderWidth: '2px',
+      borderColor: theme.header,
+      borderWidth: '1px',
     },
     '&:hover fieldset': {
-      borderColor: '#5d6dc6',
+      borderColor: theme.header,
+    },
+    '&:focus fieldset': {
+      borderColor: theme.header,
     },
   },
 }));

@@ -9,25 +9,24 @@ export const EmptyBlock = styled.div`
   }
 `;
 
-export const HeaderBlock = styled.div`
-  padding: 4px 0 10px 0;
-  width: 100%;
-  background-color: rgba(63, 81, 181, 0.22);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-  position: fixed;
-  top: 0;
-  z-index: 2;
-  backdrop-filter: blur(6px);
+export const HeaderBlock = styled.div(({ theme }) => ({
+  padding: '4px 0 10px 0',
+  width: '100%',
+  backgroundColor: theme.main,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: '10px',
+  position: 'fixed',
+  top: 0,
+  zIndex: 2,
 
-  @media (min-width: 769px) {
-    padding: 20px 0;
-    flex-direction: row;
-  }
-`;
+  '@media (min-width: 769px)': {
+    padding: '20px 0',
+    flexDirection: 'row',
+  },
+}));
 
 export const IconsBlock = styled.div`
   width: 60%;
