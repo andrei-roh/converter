@@ -2,31 +2,30 @@ import { useState } from 'react';
 import Change from '../Change/Change';
 import { TextFieldBlock, SmallTextField } from './style';
 import { Flag } from 'components/themes';
-import getFormatNumber from 'components/Content/utils/getFormatNumber';
 import ScrollUp from './components/ScrollUp/ScrollUp';
 import getCopyValue from 'components/Content/utils/getCopyValue';
 import getCopyMark from 'components/Content/utils/getCopyMark';
 import getCurrencyName from 'components/Content/utils/getCurrencyName';
 import { useTranslation } from 'react-i18next';
-import { ITableField } from 'types';
+import { ITableField, SyntheticEvent } from 'types';
 import getCountryFlag from 'components/Content/utils/getCountryFlag';
 
 const TableField: React.FC<ITableField> = ({
-  key,
   element,
   rate,
   exchangeMainField,
   showScrollButton,
+  currentMainId,
 }) => {
   const { t } = useTranslation();
   const [currencyLabel, getCurrencyLabel] = useState(element.Cur_Name);
-  const handleCurrencyLabelChange = (element: any) => {
+  const handleCurrencyLabelChange = (element: SyntheticEvent) => {
     getCopyValue(element);
     getCopyMark(currencyLabel, getCurrencyLabel);
   };
 
   return (
-    <TextFieldBlock key={key}>
+    <TextFieldBlock key={element.Cur_ID}>
       <SmallTextField
         label={
           rate
@@ -34,11 +33,12 @@ const TableField: React.FC<ITableField> = ({
             : t(getCurrencyName('currencyForExchange'))
         }
         type="text"
-        value={getFormatNumber(rate, t(getCurrencyName(currencyLabel)))}
+        value={rate || t(getCurrencyName(currencyLabel))}
         margin="normal"
         variant="outlined"
         onClick={handleCurrencyLabelChange}
         InputProps={{
+          inputMode: 'numeric',
           endAdornment: (
             <>
               <Flag src={getCountryFlag(element.Cur_ID)} alt={t('flag')} />
@@ -47,6 +47,7 @@ const TableField: React.FC<ITableField> = ({
                 value={rate}
                 id={element.Cur_ID}
                 exchangeMainField={exchangeMainField}
+                currentMainId={currentMainId}
               />
             </>
           ),

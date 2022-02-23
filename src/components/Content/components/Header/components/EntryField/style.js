@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 
 export const MainBlock = styled.div`
-  min-width: 280px;
+  min-width: 300px;
   width: 20%;
   margin: 0 8px 8px;
 
@@ -18,7 +18,8 @@ export const MainTextField = styled(TextField)(({ theme }) => ({
   },
   '& .MuiInputBase-input': {
     color: theme.text,
-    fontSize: '24px',
+    fontSize: '36px',
+    padding: '14px',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {

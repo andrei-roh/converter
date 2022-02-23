@@ -17,7 +17,7 @@ const EntryField: React.FC<IHeader> = ({
     <MainBlock>
       <MainTextField
         label={t(getCurrencyName(mainLabelValue))}
-        value={mainFieldValue ? mainFieldValue : ''}
+        value={mainFieldValue || ''}
         color="primary"
         variant="outlined"
         autoFocus={false}

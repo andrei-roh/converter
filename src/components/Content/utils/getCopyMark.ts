@@ -1,11 +1,9 @@
-const getCopyMark = (
-  value: number,
-  handler: (arg0: string | number) => void
-) => {
+const getCopyMark = (value: string, handler: (arg0: string) => void) => {
+  const delay = 300;
   handler('copied');
   setTimeout(() => {
     handler(value);
-  }, 300);
+  }, delay);
 };
 
 export default getCopyMark;

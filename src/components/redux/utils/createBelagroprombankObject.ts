@@ -1,4 +1,5 @@
 import { defaultCurrencies } from '../constants/defaultCurrencies';
+import { defaultRouble } from '../constants/defaultRouble';
 
 export const createBelagroprombankObject = (object: any) => {
   const intermediate: any = JSON.parse(object)
@@ -18,5 +19,6 @@ export const createBelagroprombankObject = (object: any) => {
           )[0]?.RateBuy || 0,
       };
     })
-    .filter((element) => element.Cur_OfficialRate > 0);
+    .filter((element) => element.Cur_OfficialRate > 0)
+    .concat(defaultRouble);
 };

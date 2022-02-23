@@ -1,4 +1,5 @@
 import { defaultCurrencies } from '../constants/defaultCurrencies';
+import { defaultRouble } from '../constants/defaultRouble';
 
 export const createBankDabrabytObject = (object: any) => {
   const intermediate: any =
@@ -14,5 +15,6 @@ export const createBankDabrabytObject = (object: any) => {
           )[0]?.attributes.buy || 0,
       };
     })
-    .filter((element) => element.Cur_OfficialRate > 0);
+    .filter((element) => element.Cur_OfficialRate > 0)
+    .concat(defaultRouble);
 };

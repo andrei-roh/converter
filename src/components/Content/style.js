@@ -41,6 +41,7 @@ export const Starter = styled.div`
 `;
 
 export const More = styled(Button)(({ theme }) => ({
+  fontSize: '20px !important',
   marginTop: '16px !important',
   color: `${theme.text} !important`,
   background: 'rgba(63, 81, 181, 0.22) !important',

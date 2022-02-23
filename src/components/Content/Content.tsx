@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import TableField from './components/TableField/TableField';
 import Footer from './components/Footer/Footer';
-import createOtherRate from './utils/createOtherRate';
-import getRate from './utils/getRate';
+import getExchangeRates from './utils/getExchangeRates';
+import getFormatNumber from './utils/getFormatNumber';
 import { Full, Starter, More } from './style';
 import { useTranslation } from 'react-i18next';
-import { IContent } from 'types';
+import { IContent, Currency, SyntheticEvent } from 'types';
 
 const Content: React.FC<IContent> = ({
   defaultValue,
   rouble,
   currencyRates,
 }) => {
+  const minElementsForShowingMore = 3;
   const { t } = useTranslation();
-  const [showBelarusRubleRate, setShowBelarusRubleRate] = useState(false);
   const [showAllCourses, setShowAllCourses] = useState(false);
   const handleShowAllCourses = () => {
     setShowAllCourses(!showAllCourses);
@@ -22,8 +22,9 @@ const Content: React.FC<IContent> = ({
   const [mainFieldValue, setMainFieldValue] = useState<number>(
     rouble.Cur_OfficialRate
   );
-  const handleMainFieldChange = (element: any) => {
-    if (element.target.value.length > 9) return;
+  const handleMainFieldChange = (element: SyntheticEvent) => {
+    const maxPlaces = 6;
+    if (element.target.value.length > maxPlaces) return;
     setMainFieldValue(element.target.value);
   };
   const [currentMainId, setCurrentMainId] = useState(rouble.Cur_ID);
@@ -43,27 +44,26 @@ const Content: React.FC<IContent> = ({
     return cleanScrollListener;
   });
 
-  const exchangeMainField = (label: string, value: number, id: number) => {
+  const exchangeMainField = (
+    label: string,
+    value: number,
+    id: number,
+    currentMainId: number
+  ) => {
     setMainLabelValue(label);
     setMainFieldValue(value);
-    id !== rouble.Cur_ID
-      ? setShowBelarusRubleRate(true)
-      : setShowBelarusRubleRate(false);
-    createOtherRate(id, setCurrentMainId, otherCurrencyRateToOther);
+    getExchangeRates(id, setCurrentMainId, currencyRates, currentMainId);
   };
 
-  const otherCurrencyRateToOther = Object.values(currencyRates).concat(rouble);
-
   const Content = (full: boolean) => {
-    return Object.values(
-      getRate(showBelarusRubleRate, currencyRates, otherCurrencyRateToOther)
-    )
-      .filter((element: any) => {
+    return Object.values(currencyRates)
+      .filter((element: Currency) => {
         return full ? element : defaultValue.includes(element.Cur_ID);
       })
-      .map((element: any) => {
-        const rate =
-          (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue;
+      .map((element: Currency) => {
+        const rate = getFormatNumber(
+          (element.Cur_Scale / element.Cur_OfficialRate) * mainFieldValue
+        );
         return element.Cur_ID !== currentMainId ? (
           <TableField
             key={element.Cur_ID}
@@ -71,6 +71,7 @@ const Content: React.FC<IContent> = ({
             rate={rate}
             exchangeMainField={exchangeMainField}
             showScrollButton={showScrollButton}
+            currentMainId={currentMainId}
           />
         ) : null;
       });
@@ -85,7 +86,7 @@ const Content: React.FC<IContent> = ({
         handleMainFieldChange={handleMainFieldChange}
       />
       <Starter>{!showAllCourses ? Content(false) : Content(true)}</Starter>
-      {!showAllCourses && Content(true).length > 3 ? (
+      {!showAllCourses && Content(true).length > minElementsForShowingMore ? (
         <More
           variant="contained"
           onClick={handleShowAllCourses}

@@ -1,7 +1,7 @@
 import { flagpedia } from '../constants/flagpedia';
 
-const getCountryFlag: any = (element: number | any) => {
-  const flag = flagpedia.find((value) => value.Cur_ID === element)?.Cur_Flag;
+const getCountryFlag: any = (id: number) => {
+  const flag = flagpedia.find((element) => element.Cur_ID === id)?.Cur_Flag;
   if (!flag) return;
   return `https://flagcdn.com/w40/${flag}.png`;
 };
