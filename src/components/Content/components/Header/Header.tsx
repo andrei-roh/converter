@@ -1,10 +1,4 @@
-import {
-  EmptyBlock,
-  HeaderBlock,
-  IconsBlock,
-  MobileSelector,
-  DesktopSelector,
-} from './style';
+import { HeaderBlock } from './style';
 import LanguageSelector from './components/LanguageSelector/LanguageSelector';
 import EntryField from './components/EntryField/EntryField';
 import BankSelector from './components/BankSelector/BankSelector';
@@ -18,27 +12,17 @@ const Header: React.FC<IHeader> = ({
   handleMainFieldChange,
 }) => {
   return (
-    <>
-      <EmptyBlock />
-      <HeaderBlock>
-        <IconsBlock>
-          <LanguageSelector />
-          <Dark />
-          <MobileSelector>
-            <BankSelector />
-          </MobileSelector>
-        </IconsBlock>
-        <EntryField
-          mainLabelValue={mainLabelValue}
-          mainFieldValue={mainFieldValue}
-          currentMainId={currentMainId}
-          handleMainFieldChange={handleMainFieldChange}
-        />
-        <DesktopSelector>
-          <BankSelector />
-        </DesktopSelector>
-      </HeaderBlock>
-    </>
+    <HeaderBlock>
+      <LanguageSelector />
+      <Dark />
+      <BankSelector />
+      <EntryField
+        mainLabelValue={mainLabelValue}
+        mainFieldValue={mainFieldValue}
+        currentMainId={currentMainId}
+        handleMainFieldChange={handleMainFieldChange}
+      />
+    </HeaderBlock>
   );
 };
 

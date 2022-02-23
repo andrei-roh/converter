@@ -5,6 +5,9 @@ export const LanguageMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
     background: theme.body,
   },
+  '& .MuiButtonBase-root': {
+    fontFamily: 'Ubuntu Condensed, sansSerif',
+  },
 }));
 
 export const LanguageMenuItem = styled(MenuItem)`

@@ -17,26 +17,27 @@ export const Starter = styled.div`
   align-items: center;
   min-width: 250px;
   max-width: 1440px;
-  margin-top: 10px;
+  margin-top: 150px;
+  margin-bottom: 20px;
 
   @media (min-width: 501px) {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 1fr 1fr;
-    margin-top: 15px;
+    margin-top: 165px;
   }
 
   @media (min-width: 769px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 20px;
+    margin-top: 120px;
+    margin-bottom: 86px;
   }
 
   @media (min-width: 1201px) {
     display: grid;
     width: 80%;
     grid-gap: 15px;
-    margin-top: 20px;
   }
 `;
 

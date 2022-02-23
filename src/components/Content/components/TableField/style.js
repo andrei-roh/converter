@@ -15,11 +15,13 @@ export const SmallTextField = styled(Field)(({ theme }) => ({
   caretColor: 'transparent',
   '& label': {
     color: theme.text,
+    fontFamily: 'Ubuntu Condensed, sansSerif',
   },
   '& .MuiInputBase-input': {
     color: theme.text,
     fontSize: '28px',
     padding: '14px',
+    fontFamily: 'Ubuntu Condensed, sansSerif',
 
     '&:hover': {
       cursor: 'pointer',

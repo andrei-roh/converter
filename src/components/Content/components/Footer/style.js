@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const EmptyBlock = styled.div`
-  height: 26px;
-  width: 100%;
-
-  @media (min-width: 769px) {
-    height: 86px;
-    width: 100%;
-  }
-`;
-
 export const FooterBlock = styled.div(({ theme }) => ({
   display: 'none',
 
