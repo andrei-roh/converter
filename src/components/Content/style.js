@@ -43,17 +43,14 @@ export const Starter = styled.div`
 export const More = styled(Button)(({ theme }) => ({
   fontSize: '20px !important',
   marginTop: '16px !important',
-  color: `${theme.text} !important`,
-  background: 'rgba(63, 81, 181, 0.22) !important',
-  border: `solid 1px ${theme.border} !important`,
+  color: `${theme.header} !important`,
+  background: `${theme.main} !important`,
 
   '&:focus': {
-    border: 'solid #3f51b5 2px !important',
-    color: '#3f51b5 !important',
+    color: `${theme.focus} !important`,
   },
 
   '&:focus-visible': {
-    border: 'solid #3f51b5 2px !important',
-    color: '#3f51b5 !important',
+    color: `${theme.focus} !important`,
   },
 }));

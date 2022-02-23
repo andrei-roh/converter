@@ -26,7 +26,7 @@ const EntryField: React.FC<IHeader> = ({
         fullWidth
         type="number"
         InputProps={{
-          endAdornment: (
+          startAdornment: (
             <Flag src={getCountryFlag(currentMainId)} alt={t('flag')} />
           ),
         }}

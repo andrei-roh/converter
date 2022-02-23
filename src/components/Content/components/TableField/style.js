@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
+import { Field } from 'components/themes';
 
 export const TextFieldBlock = styled.div`
   display: flex;
@@ -9,39 +9,23 @@ export const TextFieldBlock = styled.div`
   margin-bottom: 15px;
 `;
 
-export const SmallTextField = styled(TextField)(({ theme }) => ({
+export const SmallTextField = styled(Field)(({ theme }) => ({
   minWidth: '224px',
   maxWidth: '300px',
-  maxHeight: '56px',
-  boxSizing: 'border-box',
   caretColor: 'transparent',
   '& label': {
     color: theme.text,
   },
   '& .MuiInputBase-input': {
     color: theme.text,
-    fontSize: '36px',
+    fontSize: '28px',
     padding: '14px',
 
     '&:hover': {
       cursor: 'pointer',
     },
   },
-  '& .MuiInputBase-root': {
-    '&::before': {
-      border: 'none',
-    },
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: theme.text,
-      borderWidth: '2px',
-    },
-    '&:hover fieldset': {
-      borderColor: theme.text,
-    },
-  },
   '& .MuiOutlinedInput-adornedEnd': {
-    paddingRight: '4px',
+    paddingRight: '8px',
   },
 }));

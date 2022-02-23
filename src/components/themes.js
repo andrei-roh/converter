@@ -1,32 +1,62 @@
 import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
 export const lightTheme = {
   body: '#FFF',
-  text: '#363537',
-  border: 'null',
-  change: 'rgba(0, 0, 0, 0.09)',
+  text: '#000',
+  header: '#FFF',
+  light: '#af52bf',
+  main: '#9c27b0',
+  focus: '#8bc34a',
 };
 
 export const darkTheme = {
   body: '#363537',
   text: '#FFF',
-  border: '#FFF',
-  change: '#363537',
+  header: '#000',
+  light: '#ff7961',
+  main: '#f44336',
+  focus: '#FFF',
 };
 
 export const Button = styled(IconButton)`
-  color: ${({ theme }) => theme.text} !important;
+  color: ${({ theme }) => theme.header} !important;
 
   &:focus {
-    color: #3f51b5 !important;
+    color: ${({ theme }) => theme.focus} !important;
   }
 
   &:focus-visible {
-    color: #3f51b5 !important;
+    color: ${({ theme }) => theme.focus} !important;
   }
 `;
 
 export const Flag = styled.img`
-  margin: 0 5px;
+  margin: 0;
 `;
+
+export const Field = styled(TextField)(({ theme }) => ({
+  maxHeight: '56px',
+  boxSizing: 'border-box',
+  '& .Mui-focused': {
+    color: `${theme.focus} !important`,
+  },
+  '& .MuiInputBase-root': {
+    '&::before': {
+      border: 'none',
+    },
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: theme.light,
+      borderWidth: '1px',
+    },
+    '&:hover fieldset': {
+      borderColor: theme.light,
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: `${theme.focus} !important`,
+    },
+  },
+}));
