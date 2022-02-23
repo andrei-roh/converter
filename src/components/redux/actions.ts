@@ -37,7 +37,9 @@ export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
     endpoints;
   try {
     const response = await fetch(
-      `https://evening-taiga-06138.herokuapp.com/${url}`
+      url === nationalBank.url
+        ? url
+        : `https://evening-taiga-06138.herokuapp.com/${url}`
     );
     let result: any;
     const options = {

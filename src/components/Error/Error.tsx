@@ -15,7 +15,7 @@ const Error: React.FC<IError> = ({ error }) => {
   return (
     <Edge>
       <Mistake>
-        <Loader type="Grid" color="#e75f5f" height={250} width={250} />
+        <Loader type="Grid" color="#f44336" height={250} width={250} />
         <Phrase variant="h4" color="secondary">
           {t('error')}
         </Phrase>

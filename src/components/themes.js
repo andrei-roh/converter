@@ -6,8 +6,8 @@ export const lightTheme = {
   body: '#FFF',
   text: '#000',
   header: '#FFF',
-  light: '#af52bf',
-  main: '#9c27b0',
+  light: '#4dabf5',
+  main: '#2196f3',
   focus: '#8bc34a',
 };
 
@@ -21,6 +21,8 @@ export const darkTheme = {
 };
 
 export const Button = styled(IconButton)`
+  max-width: 48px;
+  margin: 0 auto !important;
   color: ${({ theme }) => theme.header} !important;
 
   &:focus {
@@ -33,7 +35,8 @@ export const Button = styled(IconButton)`
 `;
 
 export const Flag = styled.img`
-  margin: 0;
+  width: 40px;
+  height: 27px;
 `;
 
 export const Field = styled(TextField)(({ theme }) => ({

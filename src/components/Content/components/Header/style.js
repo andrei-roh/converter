@@ -1,20 +1,11 @@
 import styled from 'styled-components';
 
-export const EmptyBlock = styled.div`
-  height: 150px;
-  width: 100%;
-
-  @media (min-width: 769px) {
-    height: 120px;
-  }
-`;
-
 export const HeaderBlock = styled.div(({ theme }) => ({
   padding: '4px 0 10px 0',
   width: '100%',
   backgroundColor: theme.main,
-  display: 'flex',
-  flexDirection: 'column',
+  display: 'grid',
+  gridTemplateRows: 'auto',
   justifyContent: 'center',
   alignItems: 'center',
   marginBottom: '10px',
@@ -23,38 +14,9 @@ export const HeaderBlock = styled.div(({ theme }) => ({
   zIndex: 2,
 
   '@media (min-width: 769px)': {
-    padding: '20px 0',
+    display: 'grid',
+    gridTemplateColumns: '7% 7% 7% 58% 21%',
+    padding: '20px 10px',
     flexDirection: 'row',
   },
 }));
-
-export const IconsBlock = styled.div`
-  width: 60%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: 8px;
-
-  @media (min-width: 769px) {
-    width: auto;
-    justify-content: center;
-    margin-bottom: 0;
-  }
-`;
-
-export const MobileSelector = styled.div`
-  display: inherit;
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-`;
-
-export const DesktopSelector = styled.div`
-  display: none;
-
-  @media (min-width: 769px) {
-    display: inherit;
-    width: 96px;
-  }
-`;

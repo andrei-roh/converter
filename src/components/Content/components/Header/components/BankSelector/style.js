@@ -5,7 +5,6 @@ import { Button } from 'components/themes';
 export const BankIconButton = styled(Button)`
   margin-bottom: 10px;
   cursor: pointer;
-  order: 2;
 
   @media (min-width: 769px) {
     margin-bottom: 0;
@@ -16,6 +15,9 @@ export const BankMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
     background: theme.body,
   },
+  '& .MuiButtonBase-root': {
+    fontFamily: 'Ubuntu Condensed, sansSerif',
+  },
 }));
 
 export const BankMenuItem = styled(MenuItem)`
@@ -24,7 +26,7 @@ export const BankMenuItem = styled(MenuItem)`
 
 export const BankLocale = styled.div`
   position: absolute;
-  width: 100px;
+  width: 120px;
   bottom: 2px;
   font-size: 10px;
 `;
