@@ -15,7 +15,7 @@ export const HeaderBlock = styled.div(({ theme }) => ({
 
   '@media (min-width: 769px)': {
     display: 'grid',
-    gridTemplateColumns: '7% 7% 7% 58% 21%',
+    gridTemplateColumns: '13% 13% 13% 22% 39%',
     padding: '20px 10px',
     flexDirection: 'row',
   },
