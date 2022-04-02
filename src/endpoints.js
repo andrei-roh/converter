@@ -16,3 +16,5 @@ export const endpoints = {
     url: 'https://belapb.by/CashExRatesDaily.php',
   },
 };
+
+export const proxyServer = 'https://evening-taiga-06138.herokuapp.com/';

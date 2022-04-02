@@ -16,7 +16,7 @@ import { createNationalBankObject } from 'components/redux/utils/createNationalB
 import { createBelarusbankObject } from 'components/redux/utils/createBelarusbankObject';
 import { createBankDabrabytObject } from 'components/redux/utils/createBankDabrabytObject';
 import { createBelagroprombankObject } from 'components/redux/utils/createBelagroprombankObject';
-import { endpoints } from 'endpoints';
+import { endpoints, proxyServer } from 'endpoints';
 import convert from 'xml-js';
 
 const fetchStart = () => ({ type: FETCH_START });
@@ -37,9 +37,7 @@ export const fetchBelarusRubleRate = (url: string) => async (dispatch: any) => {
     endpoints;
   try {
     const response = await fetch(
-      url === nationalBank.url
-        ? url
-        : `https://evening-taiga-06138.herokuapp.com/${url}`
+      url === nationalBank.url ? url : `${proxyServer}${url}`
     );
     let result: any;
     const options = {
